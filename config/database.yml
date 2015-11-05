@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: funFinder_production
-  username: funFinder
-  password: <%= ENV['FUNFINDER_DATABASE_PASSWORD'] %>
