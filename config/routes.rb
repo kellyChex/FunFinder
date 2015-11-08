@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :profiles
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations'}
 
   root to: "application#index"
 
