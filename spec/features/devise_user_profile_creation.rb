@@ -10,10 +10,5 @@ describe 'devise user account creation' do
     click_button('Sign up')
     visit '/profiles'
     expect(page).to have_content('aName')
-
-
-
-
-
   end
 end
