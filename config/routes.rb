@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :events
-  resources :users, :only => [:show]
+  resources :users, :only => [:profile]
 
 
   devise_for :users, :controllers => { registrations: 'registrations'}
