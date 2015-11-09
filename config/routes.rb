@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+
   resources :events
-  devise_for :users
+
+  resources :profiles
+
+  devise_for :users, :controllers => { registrations: 'registrations'}
 
   root to: "application#index"
 
