@@ -4,8 +4,8 @@ RSpec.describe "events/edit", type: :view do
   before(:each) do
     @event = assign(:event, Event.create!(
       :title => "MyString",
-      :start_date => "MyString",
-      :end_date => "MyString",
+      :start_date => "MyDate",
+      :end_date => "MyDate",
       :location => "MyString",
       :user => nil
     ))

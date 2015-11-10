@@ -4,8 +4,8 @@ RSpec.describe "events/new", type: :view do
   before(:each) do
     assign(:event, Event.new(
       :title => "MyString",
-      :start_date => "MyString",
-      :end_date => "MyString",
+      :start_date => "MyDate",
+      :end_date => "MyDate",
       :location => "MyString",
       :user => nil
     ))
