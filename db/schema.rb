@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20151110080646) do
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
