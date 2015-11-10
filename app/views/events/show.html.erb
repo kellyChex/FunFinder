@@ -6,8 +6,13 @@
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @event.date %>
+  <strong>Start Date:</strong>
+  <%= @event.start_date %>
+</p>
+
+<p>
+  <strong>End Date:</strong>
+  <%= @event.end_date %>
 </p>
 
 <p>
@@ -20,10 +25,6 @@
   <%= @event.time %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @event.user %>
-</p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
