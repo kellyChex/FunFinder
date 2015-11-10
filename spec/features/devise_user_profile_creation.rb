@@ -1,14 +1,16 @@
-require 'rails_helper'
+require_relative '../rails_helper'
 
-describe 'devise user account creation' do
-  it 'should create a profile linked to the user' do
+describe 'devise user account sign up', :type => :feature do
+  it 'should create a User' do
     visit '/users/sign_up'
-    fill_in('Email', :with => 'anEmail@gmail.com')
-    fill_in('Password', :with => '12345678')
-    fill_in('Password confirmation', :with => '12345678')
-    fill_in('Name', :with => 'aName')
-    click_button('Sign up')
-    visit '/profiles'
-    expect(page).to have_content('aName')
+
+    fill_in 'Email', :with => 'user@example.com'
+    fill_in 'Password', :with => 'password'
+    fill_in 'Password confirmation', :with => 'password'
+
+    click_button 'Sign up'
+    visit '/'
+    expect(page).to have_content 'Show Profile'
   end
 end
+
