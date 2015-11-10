@@ -1,1 +1,19 @@
+<!-- Navigation -->
+<%= render 'navigation' %>
+
 <h1> Show Page </h2>
+
+
+<span>
+  <%= image_tag(@user.image.url(:med), alt:"Upload Image") %>
+</span>
+
+<h2><%= @user.email %></h2>
+<h2><%= @user.id %></h2>
+<h2><%= @user.sign_in_count %></h2>
+<h2><%= @user.last_sign_in_at %></h2>
+	
+
+
+<%= link_to 'Edit', edit_user_registration_path(@user) %> |
+<%= link_to 'Back', root_path %>
