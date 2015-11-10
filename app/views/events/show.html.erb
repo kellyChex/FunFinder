@@ -21,10 +21,13 @@
 </p>
 
 <p>
-  <strong>Time:</strong>
-  <%= @event.time %>
+  <strong>Start Time:</strong>
+  <%= @event.start_time.strftime("%I:%M %p") %>
 </p>
-
+<p>
+  <strong>End Time:</strong>
+  <%= @event.end_time.strftime("%I:%M %p") %>
+</p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
