@@ -5,6 +5,8 @@
   <%= @event.title %>
 </p>
 
+<%= link_to image_tag(@event.image.url(:med)), @event.image.url %>
+
 <p>
   <strong>Start Date:</strong>
   <%= @event.start_date %>
