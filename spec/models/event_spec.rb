@@ -11,10 +11,11 @@ RSpec.describe Event, type: :model do
 
   it 'has validations on title' do
     aEventEmpty = Event.new
-    aEventEmpty.date = '11/9/2015'
+    aEventEmpty.start_date = '11/9/2015'
+    aEventEmpty.end_date = '11/10/2015'
     aEventEmpty.location = 'San Diego'
-    aEventEmpty.user_id = 1
-    aEventEmpty.time = "2015-11-05 16:36:22"
+    aEventEmpty.start_time = "09:00 AM"
+    aEventEmpty.end_time = "11:00 AM"
     expect(aEventEmpty.valid?).to eq false
     aEventEmpty.title = 'Fun Time'
     expect(aEventEmpty.valid?).to eq true
@@ -29,64 +30,73 @@ RSpec.describe Event, type: :model do
   it 'has validations on location' do
     aEventEmpty = Event.new
     aEventEmpty.title = 'Fun Time'
-    aEventEmpty.date = '11/9/2015'
-    aEventEmpty.user_id = 1
-    aEventEmpty.time = "2015-11-05 16:36:22"
+    aEventEmpty.start_date = '11/9/2015'
+    aEventEmpty.end_date = '11/10/2015'
+    aEventEmpty.start_time = "09:00 AM"
+    aEventEmpty.end_time = "11:00 AM"
     expect(aEventEmpty.valid?).to eq false
     aEventEmpty.location = 'San Diego'
     expect(aEventEmpty.valid?).to eq true
   end
 
-  it "has a date" do
+  it "has a start date" do
     aEvent = Event.new
-    aEvent.date = '11/9/2015'
-    expect(aEvent.date).to eq('11/9/2015')
+    aEvent.start_date = '2015-11-09'
+    expect((aEvent.start_date).to_s).to eq('2015-11-09')
   end
 
-  it 'has validations on date' do
+  it "has an end date" do
+    aEvent = Event.new
+    aEvent.end_date = '2015-12-09'
+    expect((aEvent.end_date).to_s).to eq('2015-12-09')
+  end
+
+  it 'has validations on start date' do
     aEventEmpty = Event.new
     aEventEmpty.title = 'Fun Time'
     aEventEmpty.location = 'San Diego'
-    aEventEmpty.user_id = 1
-    aEventEmpty.time = "2015-11-05 16:36:22"
+    aEventEmpty.start_time = "08:00 AM"
+    aEventEmpty.end_time = "11:00 AM"
     expect(aEventEmpty.valid?).to eq false
-    aEventEmpty.date = '11/9/2015'
+    aEventEmpty.start_date = '11/9/2015'
+    aEventEmpty.end_date = '11/10/2015'
     expect(aEventEmpty.valid?).to eq true
   end
 
-  it "has a time" do
-    aEvent = Event.new
-    aEvent.time = '2000-01-01 16:36:22.000000000'
-    expect(aEvent.time).to eq('2000-01-01 16:36:22.000000000')
-  end
-
-  it 'has validations on time' do
+  it 'has validations on end date' do
     aEventEmpty = Event.new
     aEventEmpty.title = 'Fun Time'
     aEventEmpty.location = 'San Diego'
-    aEventEmpty.user_id = 1
-    aEventEmpty.date = '11/9/2015'
+    aEventEmpty.start_time = "09:00 PM"
+    aEventEmpty.end_time = "11:00 PM"
     expect(aEventEmpty.valid?).to eq false
-    aEventEmpty.time = "2015-11-05 16:36:22"
+    aEventEmpty.start_date = '11/9/2015'
+    aEventEmpty.end_date = '11/12/2015'
     expect(aEventEmpty.valid?).to eq true
   end
 
-  it "has a user" do
+  it "has a start time" do
     aEvent = Event.new
-    aEvent.user_id = 1
-    expect(aEvent.user_id).to eq(1)
+    aEvent.start_time = '2000-01-01 08:00:00 UTC'
+    expect((aEvent.start_time).to_s).to eq('2000-01-01 08:00:00 UTC')
   end
 
-  it 'has validations on user' do
+  it "has a end time" do
+    aEvent = Event.new
+    aEvent.end_time = '2000-01-01 10:00:00 UTC'
+    expect((aEvent.end_time).to_s).to eq('2000-01-01 10:00:00 UTC')
+  end
+
+  it 'has validations on start time' do
     aEventEmpty = Event.new
     aEventEmpty.title = 'Fun Time'
     aEventEmpty.location = 'San Diego'
-    aEventEmpty.time = "2015-11-05 16:36:22"
-    aEventEmpty.date = '11/9/2015'
+    aEventEmpty.start_date = '11/9/2015'
     expect(aEventEmpty.valid?).to eq false
-    aEventEmpty.user_id = 1
+    aEventEmpty.end_date = '11/12/2015'
+    aEventEmpty.start_time = "09:00 PM"
+    aEventEmpty.end_time = "11:00 PM"
     expect(aEventEmpty.valid?).to eq true
   end
-
 
 end
