@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :events
+
   # accepts_nested_attributes_for :event
+
 
 end

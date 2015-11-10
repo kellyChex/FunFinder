@@ -4,7 +4,8 @@ RSpec.describe "events/new", type: :view do
   before(:each) do
     assign(:event, Event.new(
       :title => "MyString",
-      :date => "MyString",
+      :start_date => "MyString",
+      :end_date => "MyString",
       :location => "MyString",
       :user => nil
     ))
@@ -17,7 +18,9 @@ RSpec.describe "events/new", type: :view do
 
       assert_select "input#event_title[name=?]", "event[title]"
 
-      assert_select "input#event_date[name=?]", "event[date]"
+      assert_select "input#event_start_date[name=?]", "event[start_date]"
+
+      assert_select "input#event_end_date[name=?]", "event[end_date]"
 
       assert_select "input#event_location[name=?]", "event[location]"
 
