@@ -16,6 +16,8 @@
 
 
   <% if user_signed_in? %>
+
+    <%= image_tag current_user.image.url(:thumb) %>
     Logged in as <strong><%= current_user.email %></strong>
     <%= link_to 'Edit Account', edit_user_registration_path %> |
     <%= link_to 'Show Profile', current_user %> |
