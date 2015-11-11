@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container">
+<div class="row">
+  <div class="col-md-6 text-center">
 <p>
   <strong>Title:</strong>
   <%= @event.title %>
@@ -22,6 +24,7 @@
   <%= @event.location %>
 </p>
 
+
 <p>
   <strong>Start Time:</strong>
   <%= @event.start_time.strftime("%I:%M %p") %>
@@ -33,3 +36,11 @@
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+</div>
+
+<div id="map" class="col-md-6"></div>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLSxCnYOz87YGhlWChEzRsD36ldvI2O_4&callback=initMap">
+    </script>
+</div>
+</div>
