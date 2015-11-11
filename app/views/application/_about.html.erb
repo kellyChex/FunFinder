@@ -3,8 +3,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-                    <p class="lead">This theme features some wonderful photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>
+                    <h2>ALL USERS</h2>
+                    
+
+                    <table class="user_list">
+
+                        <thead>
+                          <tr>
+                            <th>Email</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <% @users.each do |user| %>
+                                <tr>
+                                    <td><%= user.email %></td>
+                                    <td><%= link_to 'Show', user %></td>
+                                </tr>
+                            <% end %>
+
+                        </tbody>
+
+                    </table>
+                    
+
                 </div>
             </div>
             <!-- /.row -->
