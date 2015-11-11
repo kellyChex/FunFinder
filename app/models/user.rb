@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
     validates :password, presence: true, if: "id.nil?"
     validates_format_of :email,:with => Devise.email_regexp
 
+    has_many :followers, :class_name => 'Followings', :foreign_key => 'user_id'
+    has_many :following, :class_name => 'Followings', :foreign_key => 'follower_id'
+
     has_many :events
     
     # accepts_nested_attributes_for :event

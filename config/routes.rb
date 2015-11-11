@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations'}
   
+  match('/users/:id/follow', {:via => :post, :to => 'users#follow'})
+  match('/users/:id/unfollow', {:via => :delete, :to => 'users#unfollow'})
+
+
   resources :events
 
   resources :users, :only => [:show]
