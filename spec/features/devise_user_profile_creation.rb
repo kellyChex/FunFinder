@@ -10,7 +10,7 @@ describe 'devise user account sign up', :type => :feature do
 
     click_button 'Sign up'
     visit '/'
-    expect(page).to have_content 'Show Profile'
+    expect(page).to have_content 'View My Profile'
   end
 end
 
