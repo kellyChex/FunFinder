@@ -13,6 +13,7 @@
    def follow
  	@user = User.find(params[:id])
 
+
 	if Following.where(:user_id => current_user.id, :followed_id => @user.id).blank? 
 	  	@user = User.find(params[:id])
 
