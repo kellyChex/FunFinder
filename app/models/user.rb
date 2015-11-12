@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 	       :recoverable, :rememberable, :trackable, :validatable
 
+    validates :username, presence: true
+    validates :username, uniqueness: true
     validates :email, presence: true
     validates :email, uniqueness: true
     validates :password, length: { minimum: 8 }, unless: "password.nil?"
