@@ -4,6 +4,8 @@
 
 	def show
   	    @user = User.find(params[:id])
+  		@followings = Following.where(:user_id => current_user.id)
+  		@followers = User.find(@followings.follower_id)
 
     	if @user != nil
     		@user = User.find(params[:id])
@@ -12,6 +14,7 @@
 
    def follow
  	@user = User.find(params[:id])
+  		@followings = Following.where(:user_id => current_user.id)
 
 
 	if Following.where(:user_id => current_user.id, :followed_id => @user.id).blank? 
