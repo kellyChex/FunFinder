@@ -36,6 +36,9 @@ gem 'gon'
 # Use geocomplete_rails for Geocoding and Autocomplete
 gem 'geocomplete_rails', '~> 1.6', '>= 1.6.5'
 
+#User geocoder to validate addresses
+gem 'geocoder'
+
 #Use jQuery-turbolinks to resolve google map api conflicts with Turbolinks
 gem 'jquery-turbolinks'
 

@@ -1,16 +1,19 @@
 class Event < ActiveRecord::Base
 
-
   belongs_to :user
 
   validates :title, :presence => true
   validates :description, :presence => true
   validates :start_date, :end_date, :presence => true
+
+  #location validation
+  geocoded_by :location
   validates :location, :presence => true
+  after_validation :geocode, :if => :location_changed?
+
   validates :start_time, :presence => true
   validates :end_time, :presence => true
   validate :end_after_start
-
 
   has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
   validates_attachment :image, presence: true,

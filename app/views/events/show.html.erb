@@ -29,6 +29,13 @@
         <%= @event.location %>
       </p>
 
+      <p id="latitude" type="hidden" value="<%= @event.latitude %>">
+      </p>
+
+      <p id="longitude" type ="hidden" value="<%= @event.longitude %>">
+      </p>
+
+
       <p>
         <strong>Start Time:</strong>
         <%= @event.start_time.strftime("%I:%M %p") %>
