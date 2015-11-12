@@ -8,15 +8,16 @@
   <%= image_tag(@user.image.url(:med), alt:"Upload Image") %>
 </span>
 
-<h2><%= @user.email %></h2>
-<h2><%= @user.id %></h2>
-<h2><%= @user.sign_in_count %></h2>
-<h2><%= @user.last_sign_in_at %></h2>
+<h2>Username: <%= @user.username %></h2>
+<h2>Email: <%= @user.email %></h2>
+<h2>User ID: <%= @user.id %></h2>
+<h2>Sign In Count: <%= @user.sign_in_count %></h2>
+<h2>Last Signed In At: <%= @user.last_sign_in_at %></h2>
 	
 
 
 
-
+				<% if current_user.id == @user.id %>
                     <table class="followers_list">
 
                         <thead>
@@ -28,7 +29,7 @@
                         <tbody>
                             <% @my_followeds.each do |user| %>
                                 <tr>
-                                    <td><%= user.email%></td>
+                                    <td><%= user.username%></td>
                                     <td><%= link_to 'Show', user %></td>
                                 </tr>
                             <% end %>
@@ -36,6 +37,8 @@
                         </tbody>
 
                     </table>
+
+                <% end %>
 
 
 

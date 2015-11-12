@@ -10,14 +10,14 @@
 
                         <thead>
                           <tr>
-                            <th>Email</th>
+                            <th>Username</th>
                           </tr>
                         </thead>
 
                         <tbody>
                             <% @users.each do |user| %>
                                 <tr>
-                                    <td><%= user.email %></td>
+                                    <td><%= user.username %></td>
                                     <td><%= link_to 'Show', user %></td>
                                 </tr>
                             <% end %>

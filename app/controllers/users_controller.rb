@@ -4,20 +4,25 @@
 
 	def show
   	    @user = User.find(params[:id])
-  		@followings = Following.where(:user_id => current_user.id)
-  		# @followers = User.find(@followings.follower_id)
-  		@followed = []
-  		@followings.each do |followed| 
-  			@followed << followed.followed_id
-  		end
-
-  		@my_followeds = User.where(:id => @followed)
-
-
 
     	if @user != nil
     		@user = User.find(params[:id])
     	end
+
+
+
+    	if current_user.id == @user.id
+
+	  		@followings = Following.where(:user_id => current_user.id)
+	  		@followed = []
+	  		@followings.each do |following| 
+	  			@followed << following.followed_id
+	  		end
+	  		@my_followeds = User.where(:id => @followed)
+	  		
+  		end
+
+
 	end
 
    def follow

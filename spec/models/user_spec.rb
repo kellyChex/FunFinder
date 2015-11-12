@@ -2,6 +2,13 @@ require_relative '../rails_helper'
 
 RSpec.describe User, type: :model do
 
+
+  it 'has a username' do
+    aUser = User.new
+    aUser.username = "username"
+    expect(aUser.username).to eq ("username")
+  end
+
   it 'has an email' do
     aUser = User.new
     aUser.email = 'adamcar@gmail.com'
@@ -25,5 +32,6 @@ RSpec.describe User, type: :model do
   	aUser.sign_in_count = 1
   	expect(aUser.sign_in_count).to eq (1)
   end
+
 
 end
