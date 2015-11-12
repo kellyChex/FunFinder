@@ -1,12 +1,12 @@
-require 'rails_helper'
+require '../rails_helper'
 
 
-describe 'event creation' do
+describe 'event creation', :type => :feature do
  it 'should create an event' do
    visit '/events'
    click_link('New Event')
    fill_in 'Title', :with => 'New Event'
-   attach_file 'event_image', '../FunFinder/spec/images/headshot.png'
+   attach_file 'event_image', '../images/headshot.png'
    fill_in 'Description', :with => 'myDescription'
    select( '2015', :from => 'event_start_date_1i')
    select( 'November', :from => 'event_start_date_2i')
