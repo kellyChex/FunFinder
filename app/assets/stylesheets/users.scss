@@ -11,3 +11,18 @@
 		color: #ccc;
 	}
 }
+
+.event_list {
+	color: white;
+	margin: 100px;
+	td {
+		padding: 20px;
+	}
+	a {
+		color: white;
+		margin-left: 40px;
+		&:hover {
+			color: orange;
+		}
+	}
+}

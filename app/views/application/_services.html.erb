@@ -7,6 +7,45 @@
                 <div class="col-lg-10 col-lg-offset-1">
                     <h2>Our Services</h2>
                     <hr class="small">
+
+
+                    <div class="row">
+
+
+
+                    <h2>ALL EVENTS</h2>
+                    
+                    <%= link_to 'New Event', new_event_path, :class => "event_list" %>
+
+
+                    <table class="event_list">
+
+                        <thead>
+                          <tr>
+                            <th>Title</th>
+                            <th>Location</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <% @events.each do |event| %>
+                                <tr>
+                                    <td><%= event.title %></td>
+                                    <td><%= event.location %></td>
+                                    <td><%= event.description %></td>
+                                    <td><%= link_to 'Show', event %></td>
+                                </tr>
+                            <% end %>
+
+                        </tbody>
+
+                    </table>
+
+
+
+
+                    </div>
                     <div class="row">
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
