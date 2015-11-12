@@ -36,5 +36,41 @@
   <%= @event.end_time.strftime("%I:%M %p") %>
 </p>
 
+<hr>
+<h1>People Attending This Event</h1>
+
+<table class="attendance_list">
+
+    <thead>
+      <tr>
+        <th>Username</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% @eventees.each do |eventee| %>
+            <tr>
+                <td><%= eventee.username%></td>
+                <td><%= link_to 'Show', @user %></td>
+            </tr>
+        <% end %>
+
+    </tbody>
+
+</table>
+
+
+<hr>
+
+
+  <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
+    <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %> |
+  <% else %> 
+    <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %> |
+  <% end %>
+
+
+
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', root_path %>
