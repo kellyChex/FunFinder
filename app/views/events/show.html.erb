@@ -1,49 +1,51 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-<div class="row">
-  <div class="col-md-6 text-center">
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <p>
+        <strong>Title:</strong>
+        <%= @event.title %>
+      </p>
 
-<%= link_to image_tag(@event.image.url(:med)), @event.image.url %>
+      <%= link_to image_tag(@event.image.url(:med)), @event.image.url %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @event.description %>
+      </p>
 
-<p>
-  <strong>Start Date:</strong>
-  <%= @event.start_date %>
-</p>
+      <p>
+        <strong>Start Date:</strong>
+        <%= @event.start_date %>
+      </p>
 
-<p>
-  <strong>End Date:</strong>
-  <%= @event.end_date %>
-</p>
+      <p>
+        <strong>End Date:</strong>
+        <%= @event.end_date %>
+      </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
+      <p>
+        <strong>Location:</strong>
+        <%= @event.location %>
+      </p>
 
 
-<p>
-  <strong>Start Time:</strong>
-  <%= @event.start_time.strftime("%I:%M %p") %>
-</p>
-<p>
-  <strong>End Time:</strong>
-  <%= @event.end_time.strftime("%I:%M %p") %>
-</p>
+      <p>
+        <strong>Start Time:</strong>
+        <%= @event.start_time.strftime("%I:%M %p") %>
+      </p>
+      <p>
+        <strong>End Time:</strong>
+        <%= @event.end_time.strftime("%I:%M %p") %>
+      </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
-</div>
+      <%= link_to 'Edit', edit_event_path(@event) %> |
+      <%= link_to 'Back', events_path %>
+    </div>
 
-<div id="map" class="col-md-6"></div>
+    <div class="col-md-6">
+       <div id="map"></div>
+    </div>
 
-</div>
+  </div>
 </div>
