@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Gon to easily pass data to JavaScript
 gem 'gon'
+# Use geocomplete_rails for Geocoding and Autocomplete
+gem 'geocomplete_rails', '~> 1.6', '>= 1.6.5'
 
 
 # Use ActiveModel has_secure_password
