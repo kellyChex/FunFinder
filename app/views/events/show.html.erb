@@ -29,11 +29,11 @@
         <%= @event.location %>
       </p>
 
-
       <p>
         <strong>Start Time:</strong>
         <%= @event.start_time.strftime("%I:%M %p") %>
       </p>
+
       <p>
         <strong>End Time:</strong>
         <%= @event.end_time.strftime("%I:%M %p") %>
@@ -46,6 +46,5 @@
     <div class="col-md-6">
        <div id="map"></div>
     </div>
-
   </div>
 </div>

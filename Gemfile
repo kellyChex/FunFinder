@@ -34,6 +34,8 @@ gem 'gon'
 # Use geocomplete_rails for Geocoding and Autocomplete
 gem 'geocomplete_rails', '~> 1.6', '>= 1.6.5'
 
+#Use jQuery-turbolinks to resolve google map api conflicts with Turbolinks
+gem 'jquery-turbolinks'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
