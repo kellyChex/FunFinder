@@ -1,4 +1,4 @@
-require 'rails_helper'
+require '../rails_helper'
 # require 'factory_girl_rails'
 
 RSpec.describe Event, type: :model do
