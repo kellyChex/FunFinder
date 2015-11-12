@@ -1,4 +1,10 @@
-alert("test")
+$( document ).ready(function() {
+  $('#event_location').geocomplete();
+
+  
+});
+
+
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
