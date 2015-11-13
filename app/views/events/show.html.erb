@@ -93,10 +93,11 @@
     var location = new google.maps.LatLng(latitude,longitude);
     var mapOptions = { zoom:13, center: location }
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+    var icon = document.getElementById("")
     var marker = new google.maps.Marker({
       position: location,
       animation: google.maps.Animation.BOUNCE,
+      icon: "<%= asset_path 'icons/funfinder-logo7.png' %>",
       map: map
     });
   }
