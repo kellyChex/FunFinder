@@ -1,24 +1,30 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html, :js
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
+    @tags = Tag.all
+
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @event.tags.build
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    @Tag = Tag.new
+    @event.tags.build
   end
 
   # GET /events/1/edit
   def edit
+    @event.tags.build
   end
 
   # POST /events
@@ -51,6 +57,19 @@ class EventsController < ApplicationController
     end
   end
 
+  #ADD Tag
+def add_tag
+  @event = Event.find(params[:id])
+  newTag = Tag.new(params[:tag])
+  if newTag.valid?
+    newTag.name.downcase! # ! alters the original
+    newTag.save
+    @event.tags << newTag
+    @event.save
+  end
+  render 'show.html.erb'
+end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
@@ -69,6 +88,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :image, :start_date, :end_date, :location, :start_time,:end_time, :user_id)
+      params.require(:event).permit(:title, :description, :image, :start_date, :end_date, :location, :start_time,:end_time, :user_id, tags_attributes: [:id, :name, :_destroy])
     end
 end

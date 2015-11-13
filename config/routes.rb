@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :tags
   devise_for :users, :controllers => { registrations: 'registrations'}
-  
+
   match('/users/:id/follow', {:via => :post, :to => 'users#follow'})
   match('/users/:id/unfollow', {:via => :delete, :to => 'users#unfollow'})
+  match('events/:id/add_tag', {:via => :post, :to => 'events#add_tag'})
 
 
   resources :events

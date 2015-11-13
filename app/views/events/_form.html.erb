@@ -43,6 +43,20 @@
     <%= f.label :end_time %><br>
     <%= f.time_field :end_time%>
   </div>
+
+  <h2>Edit Tags</h2>
+  <div>
+  <%= f.fields_for :tags do |tag| %>
+    <div class="tag_fields">
+      <div class="field">
+        <%= tag.text_field :name %>
+        <%= tag.check_box :_destroy %>
+        <%= tag.label :_destroy, 'remove' %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
