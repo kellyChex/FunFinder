@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :load_event_icons
   respond_to :html, :js
   # GET /events
   # GET /events.json
@@ -140,10 +139,4 @@ end
   def event_params
     params.require(:event).permit(:title, :description, :image, :start_date, :end_date, :location, :start_time,:end_time, :user_id, :latitude, :longitude, tags_attributes: [:id, :name, :_destroy])
   end
-
-  def load_event_icons
-    @icons = [bbq.png, ]
-
-  end
-
 end
