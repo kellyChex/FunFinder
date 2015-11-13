@@ -38,6 +38,7 @@ describe 'attend feature for an event', :type => :feature do
     click_link 'Attend'
     expect(page).to have_content 'Unattend'
 
+    visit '/events/1'
     click_link 'Unattend'
     expect(page).to have_content 'Attend'
   end
