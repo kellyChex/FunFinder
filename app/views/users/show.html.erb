@@ -1,59 +1,97 @@
 <!-- Navigation -->
 <%= render 'navigation' %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+    <!-- Your Account Data -->
+            <span>
+              <%= image_tag(@user.image.url(:med), alt:"Upload Image") %>
+            </span>
+            <h4>Username: <%= @user.username %></h4>
+            <h4>Email: <%= @user.email %></h4>
+            <h4>User ID: <%= @user.id %></h4>
+            <h4>Sign In Count: <%= @user.sign_in_count %></h4>
+            <h4>Last Signed In At: <%= @user.last_sign_in_at %></h4>
+        </div>
+    <!-- Your Posted Events -->
+        <div class="col-md-3">
 
-<h1> Show Page </h2>
 
 
-<span>
-  <%= image_tag(@user.image.url(:med), alt:"Upload Image") %>
-</span>
+            <% if current_user.id == @user.id %>
+                <p>My Events</p>
+                <table >
+                    <thead>
+                        <tr>
+                            <th>Event Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @my_events.each do |event| %>
+                            <tr>
+                                <td><%= event.title %></td>
+                                <td><%= link_to 'Show', event %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            <% end %>
 
-<h2>Username: <%= @user.username %></h2>
-<h2>Email: <%= @user.email %></h2>
-<h2>User ID: <%= @user.id %></h2>
-<h2>Sign In Count: <%= @user.sign_in_count %></h2>
-<h2>Last Signed In At: <%= @user.last_sign_in_at %></h2>
-	
 
 
 
-				<% if current_user.id == @user.id %>
-                    <table class="followers_list">
 
-                        <thead>
-                          <tr>
+
+
+
+
+
+        </div>
+    <!-- Your Following's Posted Events -->
+        <div class="col-md-3">
+            <p>My Following's Events</p>
+        </div>
+
+    <!-- Your Following List -->
+        <div class="col-md-3">
+            <% if current_user.id == @user.id %>
+                <p>I'm Following</p>
+                <table >
+                    <thead>
+                        <tr>
                             <th>Username</th>
-                          </tr>
-                        </thead>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @my_followeds.each do |user| %>
+                            <tr>
+                                <td><%= user.username%></td>
+                                <td><%= link_to 'Show', user %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            <% end %>
+        </div>
 
-                        <tbody>
-                            <% @my_followeds.each do |user| %>
-                                <tr>
-                                    <td><%= user.username%></td>
-                                    <td><%= link_to 'Show', user %></td>
-                                </tr>
-                            <% end %>
-
-                        </tbody>
-
-                    </table>
-
-                <% end %>
-
+    </div> <!-- END ROW -->
 
 
-<% if current_user != @user %>
-	<% 	if Following.where(:user_id => current_user.id, :followed_id => @user.id).blank? %>
-		<%= link_to 'Follow', '/users/' + @user.id.to_s + '/follow', :method => :post %> |
-	<% else %> 
-		<%= link_to 'Unfollow', '/users/' + @user.id.to_s + '/unfollow', :method => :delete %> |
-	<% end %>
-<% else %>
-<% end %> 
+    <!-- Profile Buttons: Follow/Unfollow, Create New Event, Edit Profile, Back -->
+    <div class="row text-center">
+        <div class="col-md-12">
+            <% if current_user != @user %>
+            	<% 	if Following.where(:user_id => current_user.id, :followed_id => @user.id).blank? %>
+            		<%= link_to 'Follow', '/users/' + @user.id.to_s + '/follow', :method => :post %> |
+            	<% else %> 
+            		<%= link_to 'Unfollow', '/users/' + @user.id.to_s + '/unfollow', :method => :delete %> |
+            	<% end %>
+            <% else %>
+            <% end %> 
 
-
-
-
-<%= link_to 'New Event', new_event_path %> |
-<%= link_to 'Edit', edit_user_registration_path(@user) %> |
-<%= link_to 'Back', root_path %>
+            <%= link_to 'New Event', new_event_path %> |
+            <%= link_to 'Edit', edit_user_registration_path(@user) %> |
+            <%= link_to 'Back', root_path %>
+        </div>
+    </div>
+</div>
