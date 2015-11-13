@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative '../rails_helper'
 
 
 describe 'add tag(s) to an event', :type => :feature do
