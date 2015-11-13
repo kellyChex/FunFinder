@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :tags
   devise_for :users, :controllers => { registrations: 'registrations'}
-  
+
   match('/users/:id/follow', {:via => :post, :to => 'users#follow'})
   match('/users/:id/unfollow', {:via => :delete, :to => 'users#unfollow'})
-
   match('/events/:id/attend', {:via => :post, :to => 'events#attend'})
   match('/events/:id/unattend', {:via => :delete, :to => 'events#unattend'})
 
