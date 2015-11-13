@@ -1,4 +1,4 @@
-require '../rails_helper'
+require_relative '../rails_helper'
 
 
 describe 'follow feature for a user', :type => :feature do

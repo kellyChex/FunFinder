@@ -15,8 +15,10 @@
 
                     <h2>ALL EVENTS</h2>
                     
-                    <%= link_to 'New Event', new_event_path, :class => "event_list" %>
 
+                    <% if user_signed_in? %>
+                        <%= link_to 'New Event', new_event_path, :class => "event_list" %>
+                    <% end %>
 
                     <table class="event_list">
 
@@ -34,7 +36,10 @@
                                     <td><%= event.title %></td>
                                     <td><%= event.location %></td>
                                     <td><%= event.description %></td>
-                                    <td><%= link_to 'Show', event %></td>
+
+                                    <% if user_signed_in? %>
+                                        <td><%= link_to 'Show', event %></td>
+                                    <% end %>
                                 </tr>
                             <% end %>
 

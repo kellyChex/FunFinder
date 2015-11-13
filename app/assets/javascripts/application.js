@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.geocomplete
 //= require bootstrap
+//= require new
 //= require events
 //= require_tree .

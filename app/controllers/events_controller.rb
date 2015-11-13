@@ -1,15 +1,18 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html, :js
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
+    @tags = Tag.all
+
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @event.tags.build
 
     @event = Event.find(params[:id])
     @user = current_user
@@ -26,10 +29,13 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @Tag = Tag.new
+    @event.tags.build
   end
 
   # GET /events/1/edit
   def edit
+    @event.tags.build
   end
 
   # POST /events
@@ -37,18 +43,11 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @attendances = Attendance.where(:event_id => @event.id)
+    @event.save
+    attend
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
   end
-  
+
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
@@ -63,6 +62,19 @@ class EventsController < ApplicationController
     end
   end
 
+  #ADD Tag
+def add_tag
+  @event = Event.find(params[:id])
+  newTag = Tag.new(params[:tag])
+  if newTag.valid?
+    newTag.name.downcase! # ! alters the original
+    newTag.save
+    @event.tags << newTag
+    @event.save
+  end
+  render 'show.html.erb'
+end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
@@ -74,12 +86,11 @@ class EventsController < ApplicationController
   end
 
   def attend
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id]) if @event.nil?
     @attendances = Attendance.where(:user_id => current_user.id)
     @user = current_user
 
     if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank?
-      @event = Event.find(params[:id])
 
       @attendance = Attendance.new
       @attendance.event_id = @event.id
@@ -100,6 +111,8 @@ class EventsController < ApplicationController
       render 'show.html.erb'
     end
   end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
 
   def unattend
     @event = Event.find(params[:id])
@@ -124,6 +137,7 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:title, :description, :image, :start_date, :end_date, :location, :start_time,:end_time, :user_id, :latitude, :longitude)
+    params.require(:event).permit(:title, :description, :image, :start_date, :end_date, :location, :start_time,:end_time, :user_id, :latitude, :longitude, tags_attributes: [:id, :name, :_destroy])
   end
+
 end
