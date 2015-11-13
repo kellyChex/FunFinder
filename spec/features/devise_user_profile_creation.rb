@@ -1,4 +1,4 @@
-require '../rails_helper'
+require_relative '../rails_helper'
 
 describe 'devise user account sign up', :type => :feature do
   it 'should create a User' do
@@ -8,7 +8,7 @@ describe 'devise user account sign up', :type => :feature do
     fill_in 'Email', :with => 'user@example.com'
     fill_in 'Password', :with => 'password'
     fill_in 'Password confirmation', :with => 'password'
-    attach_file('user_image', '../images/headshot.png')
+    attach_file('user_image', 'spec/images/headshot.png')
 
 
     click_button 'Sign up'
@@ -17,4 +17,3 @@ describe 'devise user account sign up', :type => :feature do
     expect(page).to have_content 'View My Profile'
   end
 end
-
