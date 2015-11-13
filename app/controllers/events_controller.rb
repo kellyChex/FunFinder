@@ -43,16 +43,8 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @attendances = Attendance.where(:event_id => @event.id)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    @event.save
+    attend
   end
 
   # PATCH/PUT /events/1
@@ -93,12 +85,11 @@ end
   end
 
   def attend
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id]) if @event.nil?
     @attendances = Attendance.where(:user_id => current_user.id)
     @user = current_user
 
     if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank?
-      @event = Event.find(params[:id])
 
       @attendance = Attendance.new
       @attendance.event_id = @event.id
