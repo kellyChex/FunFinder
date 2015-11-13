@@ -1,8 +1,19 @@
 require '../rails_helper'
 
 
-describe 'event creation', :type => :feature do
- it 'should create an event' do
+describe 'attend feature for an event', :type => :feature do
+  it 'should allow a user to attend an event' do
+    # User 1 Sign Up
+    visit '/users/sign_up'
+    fill_in 'Username', :with => 'username1'
+    fill_in 'Email', :with => 'user1@example.com'
+    fill_in 'Password', :with => 'password'
+    fill_in 'Password confirmation', :with => 'password'
+    click_button 'Sign up'
+    expect(page).to have_content 'Logged in as username1'
+
+
+   # Event Creation
    visit '/events'
    click_link('New Event')
    fill_in 'Title', :with => 'New Event'
@@ -23,4 +34,5 @@ describe 'event creation', :type => :feature do
    expect(page).to have_content 'Event was successfully created.'
 
   end
- end
+
+end
