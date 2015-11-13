@@ -1,4 +1,4 @@
-require '../rails_helper'
+require_relative '../rails_helper'
 
 
 describe 'attend feature for an event', :type => :feature do
@@ -17,7 +17,7 @@ describe 'attend feature for an event', :type => :feature do
    visit '/events'
    click_link('New Event')
    fill_in 'Title', :with => 'New Event'
-   attach_file 'event_image', '../images/headshot.png'
+   attach_file 'event_image', 'spec/images/headshot.png'
    fill_in 'Description', :with => 'myDescription'
    select( '2015', :from => 'event_start_date_1i')
    select( 'November', :from => 'event_start_date_2i')
@@ -31,7 +31,7 @@ describe 'attend feature for an event', :type => :feature do
    fill_in 'event_end_time', :with => '13:09:00.000'
    click_button('Create Event')
 
-   expect(page).to have_content 'Event was successfully created.'
+   expect(page).to have_content 'Description'
 
     # User Attends Event
     visit '/events/1'

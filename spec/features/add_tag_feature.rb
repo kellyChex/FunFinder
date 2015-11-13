@@ -32,7 +32,7 @@ describe 'add tag(s) to an event', :type => :feature do
    fill_in 'event_tags_attributes_0_name', :with => 'Iceland'
    click_button('Create Event')
 
-   expect(page).to have_content 'Event was successfully created.'
+   expect(page).to have_content 'Description'
 
   end
 

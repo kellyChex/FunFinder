@@ -1,4 +1,4 @@
-require '../rails_helper'
+require_relative '../rails_helper'
 # require 'factory_girl_rails'
 
 RSpec.describe Event, type: :model do
@@ -90,19 +90,19 @@ RSpec.describe Event, type: :model do
     expect(aEvent.location).to eq('myLocation')
   end
 
-  it 'has validations on location' do
-    aEventEmpty = Event.new
-    aEventEmpty.title = 'Fun Time'
-    aEventEmpty.image_file_name = 'header-bg_copy.png'
-    aEventEmpty.description = 'myDescription'
-    aEventEmpty.start_date = '11/9/2015'
-    aEventEmpty.end_date = '11/10/2015'
-    aEventEmpty.start_time = "09:00 AM"
-    aEventEmpty.end_time = "11:00 AM"
-    expect(aEventEmpty.valid?).to eq false
-    aEventEmpty.location = 'San Diego'
-    expect(aEventEmpty.valid?).to eq true
-  end
+  # it 'has validations on location' do
+  #   aEventEmpty = Event.new
+  #   aEventEmpty.title = 'Fun Time'
+  #   aEventEmpty.image_file_name = 'header-bg_copy.png'
+  #   aEventEmpty.description = 'myDescription'
+  #   aEventEmpty.start_date = '11/9/2015'
+  #   aEventEmpty.end_date = '11/10/2015'
+  #   aEventEmpty.start_time = "09:00 AM"
+  #   aEventEmpty.end_time = "11:00 AM"
+  #   expect(aEventEmpty.valid?).to eq false
+  #   aEventEmpty.location = 'San Diego'
+  #   expect(aEventEmpty.valid?).to eq true
+  # end
 
   it "has a start time" do
     aEvent = Event.new
