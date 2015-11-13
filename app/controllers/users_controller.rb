@@ -3,10 +3,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @events = Event.all
 
-    if @user != nil
-      @user = User.find(params[:id])
-    end
-
 # This shows who you are following
     if current_user.id == @user.id
 
@@ -16,6 +12,14 @@ class UsersController < ApplicationController
         @followed << following.followed_id
       end
       @my_followeds = User.where(:id => @followed)
+
+# This gives the events being attended by the people you are following
+      @followed_attendances = Attendance.where(:user_id => @followed)
+      @followed_events = []
+      @followed_attendances.each do |followed_attending|
+        @followed_events << followed_attending.event_id
+      end
+      @my_followed_events = Event.where(:id => @followed_events)
     end
 
 # This shows what events you are going to
@@ -29,6 +33,7 @@ class UsersController < ApplicationController
       @my_events = Event.where(:id => @attended)
     end
   end
+
 
   def follow
     @user = User.find(params[:id])
