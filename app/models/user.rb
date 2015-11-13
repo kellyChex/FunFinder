@@ -16,13 +16,11 @@ class User < ActiveRecord::Base
     has_many :following, :class_name => 'Followings', :foreign_key => 'follower_id'
 
     has_many :events
-    
-    # accepts_nested_attributes_for :event
+
 
 has_attached_file :image, styles: { thumb: "64x64", med: "100x100", large: "200x200" },
-    :default_url => "default_:style.png"    
-    validates_attachment :image, 
+    :default_url => "default_:style.png"
+    validates_attachment :image,
     content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
     size: { in: 0..10.megabytes }
-
 end

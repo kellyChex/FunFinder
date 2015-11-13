@@ -27,6 +27,12 @@
   <%= @event.location %>
 </p>
 
+<p id="latitude" type="hidden" value="<%= @event.latitude %>">
+</p>
+
+<p id="longitude" type ="hidden" value="<%= @event.longitude %>">
+</p>
+
 <p>
   <strong>Start Time:</strong>
   <%= @event.start_time.strftime("%I:%M %p") %>
@@ -36,23 +42,63 @@
   <%= @event.end_time.strftime("%I:%M %p") %>
 </p>
 
-<p>
-  <strong>Tags:</strong>
-  <% @event.tags.each do |tag| %>
-    <%= '#' + tag.name %>,
+<strong>Tags:</strong>
+<% if @event.tags.any? %>
+  <p>
+    <% @event.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  </p>
+<% else %>
+  <p>none available</p>
+<% end %>
+
+<hr>
+<h1>People Attending This Event</h1>
+
+<table class="attendance_list">
+  <thead>
+    <tr>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @eventees.each do |eventee| %>
+    <tr>
+      <td><%= eventee.username%></td>
+      <td><%= link_to 'Show', @user %></td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+  <hr>
+  <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
+  <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %> |
+  <% else %>
+  <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %> |
   <% end %>
-</p>
 
-<form action='/events/<%=@event.id%>/add_tag' method="post">
-  <div class="field">
-    <label for="tag_name">Tag Name</label><br>
-    <input type="text" name="tag[name]" id="tag_name" />
-  </div>
-  <div class="actions">
-    <input type="submit" name="commit" value="Add Tag" />
-  </div>
-</form>
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+  <%= link_to 'Back', events_path %>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div id="map"></div>
+
+<script>
+  function initMap() {
+    var latitude = document.getElementById("latitude").getAttribute("value");
+    var longitude = document.getElementById("longitude").getAttribute("value");
+    var location = new google.maps.LatLng(latitude,longitude);
+    var mapOptions = { zoom:13, center: location }
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    var marker = new google.maps.Marker({
+      position: location,
+      animation: google.maps.Animation.BOUNCE,
+      map: map
+    });
+  }
+  google.maps.event.addDomListener(window, "load", initMap);
+</script>

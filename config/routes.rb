@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   match('/users/:id/follow', {:via => :post, :to => 'users#follow'})
   match('/users/:id/unfollow', {:via => :delete, :to => 'users#unfollow'})
-  match('events/:id/add_tag', {:via => :post, :to => 'events#add_tag'})
-
+  match('/events/:id/attend', {:via => :post, :to => 'events#attend'})
+  match('/events/:id/unattend', {:via => :delete, :to => 'events#unattend'})
 
   resources :events
 

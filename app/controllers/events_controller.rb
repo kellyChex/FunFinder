@@ -13,6 +13,17 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event.tags.build
+
+    @event = Event.find(params[:id])
+    @user = current_user
+
+    @attendances = Attendance.where(:event_id => @event.id)
+    @attendees = []
+    @attendances.each do |attendance|
+      @attendees << attendance.user_id
+    end
+    @eventees = User.where(:id => @attendees)
+
   end
 
   # GET /events/new
@@ -31,6 +42,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @attendances = Attendance.where(:event_id => @event.id)
 
     respond_to do |format|
       if @event.save
@@ -80,14 +92,60 @@ end
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
+  def attend
+    @event = Event.find(params[:id])
+    @attendances = Attendance.where(:user_id => current_user.id)
+    @user = current_user
+
+    if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank?
       @event = Event.find(params[:id])
+
+      @attendance = Attendance.new
+      @attendance.event_id = @event.id
+      @attendance.user_id = current_user.id
+      @attendance.save
+
+      @attendances = Attendance.where(:event_id => @event.id)
+      @attendees = []
+
+      @attendances.each do |attendance|
+        @attendees << attendance.user_id
+      end
+
+      @eventees = User.where(:id => @attendees)
+
+      render 'show.html.erb'
+    else
+      render 'show.html.erb'
     end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:title, :description, :image, :start_date, :end_date, :location, :start_time,:end_time, :user_id, tags_attributes: [:id, :name, :_destroy])
+
+  def unattend
+    @event = Event.find(params[:id])
+    @attendance = Attendance.where(:user_id => current_user.id, :event_id => @event.id)
+    Attendance.destroy(@attendance)
+
+    @attendances = Attendance.where(:event_id => @event.id)
+    @attendees = []
+    @attendances.each do |attendance|
+      @attendees << attendance.user_id
     end
+    @eventees = User.where(:id => @attendees)
+
+    render 'show.html.erb'
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:title, :description, :image, :start_date, :end_date, :location, :start_time,:end_time, :user_id, :latitude, :longitude, tags_attributes: [:id, :name, :_destroy])
+  end
+
 end

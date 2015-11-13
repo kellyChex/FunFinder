@@ -34,6 +34,8 @@
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
   </div>
   <div class="field">
     <%= f.label :start_time %><br>
@@ -44,8 +46,14 @@
     <%= f.time_field :end_time%>
   </div>
 
+  <p>
+    <strong>Tags:</strong>
+    <% @event.tags.each do |tag| %>
+      <%= tag.name%>
+    <% end %>
+  </p>
+
   <h2>Edit Tags</h2>
-  <div>
   <%= f.fields_for :tags do |tag| %>
     <div class="tag_fields">
       <div class="field">
@@ -54,8 +62,7 @@
         <%= tag.label :_destroy, 'remove' %>
       </div>
     </div>
-  <% end %>
-  </div>
+    <% end %>
 
   <div class="actions">
     <%= f.submit %>
