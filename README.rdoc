@@ -9,6 +9,10 @@ TODO: Describe the installation process
 
 ## Usage
 
+Before uploading to Heroku, do this:
+$ bundle exec rake assets:precompile RAILS_ENV=production
+
+
 TODO: Write usage instructions
 
 ## Contributing

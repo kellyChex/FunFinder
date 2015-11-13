@@ -1,12 +1,16 @@
 class Event < ActiveRecord::Base
 
-
   belongs_to :user
 
   validates :title, :presence => true
   validates :description, :presence => true
   validates :start_date, :end_date, :presence => true
+
+  #location validation
+  geocoded_by :location
   validates :location, :presence => true
+  after_validation :geocode, :if => :location_changed?
+
   validates :start_time, :presence => true
   validates :end_time, :presence => true
   validate :end_after_start
@@ -14,12 +18,10 @@ class Event < ActiveRecord::Base
   has_many :attendees, :class_name => 'Attendances', :foreign_key => 'user_id'
   has_many :attendance, :class_name => 'Attendances', :foreign_key => 'event_id'
 
-
   has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
   validates_attachment :image,
     content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
     size: { in: 0..10.megabytes }
-
 
   private
 
