@@ -45,6 +45,7 @@ class EventsController < ApplicationController
     @attendances = Attendance.where(:event_id => @event.id)
     @event.save
     attend
+
   end
 
   # PATCH/PUT /events/1
