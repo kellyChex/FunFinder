@@ -1,4 +1,4 @@
-require_relative '../rails_helper'
+require '../rails_helper'
 
 describe 'devise user account sign up', :type => :feature do
   it 'should create a User' do
