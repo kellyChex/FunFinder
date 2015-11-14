@@ -5,20 +5,26 @@
     <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+     
             <li class="sidebar-brand">
-                <a href="#top"  onclick = $("#menu-close").click(); ><%= current_user.username %></a>
+                <% if user_signed_in? %>
+                    <%= link_to current_user.username, current_user, :onclick => "closeNav()" %>
+                <% end %>
             </li>
 
             <li>
-                <%= image_tag current_user.image.url(:thumb) %>
+                <% if user_signed_in? %>
+                    <%= image_tag current_user.image.url(:thumb) %>
+                <% end %>
             </li>
 
             <li>
                 <a href="/" onclick = $("#menu-close").click(); >Home</a>
             </li>
             <li>
-                <%= link_to 'View My Profile', current_user, :onclick => "closeNav()" %>
+                <% if user_signed_in? %>
+                    <%= link_to 'View My Profile', current_user, :onclick => "closeNav()" %>
+                <% end %>
             </li>
 <!--             <li>
                 <a href="#services" onclick = $("#menu-close").click(); >Services</a>
