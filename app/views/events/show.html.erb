@@ -66,7 +66,7 @@
     <% @eventees.each do |eventee| %>
     <tr>
       <td><%= eventee.username%></td>
-      <td><%= link_to 'Show', @user %></td>
+      <td><%= link_to 'Show', @user, class: "show" %></td>
     </tr>
     <% end %>
 
@@ -75,13 +75,13 @@
 
   <hr>
   <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
-  <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %> |
+  <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post, class: "attend" %> |
   <% else %>
-  <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %> |
+  <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete, class: "unattend" %> |
   <% end %>
 
-  <%= link_to 'Edit', edit_event_path(@event) %> |
-  <%= link_to 'Back', events_path %>
+  <%= link_to 'Edit', edit_event_path(@event), class: "edit" %> |
+  <%= link_to 'Back', events_path, class: "back" %>
 
 
 <div id="map"></div>
