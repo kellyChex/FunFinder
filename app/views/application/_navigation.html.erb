@@ -7,19 +7,25 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
+              <% if current_user.nil? %>
+                <a href="#top"  onclick = $("#menu-close").click(); ></a>
+              <% else %>
                 <a href="#top"  onclick = $("#menu-close").click(); ><%= current_user.username %></a>
+              <% end %>
             </li>
-
-            <li>
-                <%= image_tag current_user.image.url(:thumb) %>
-            </li>
-
+            <% if !current_user.nil? %>
+              <li>
+                  <%= image_tag current_user.image.url(:thumb) %>
+              </li>
+            <% end %>
             <li>
                 <a href="/" onclick = $("#menu-close").click(); >Home</a>
             </li>
-            <li>
-                <%= link_to 'View My Profile', current_user, :onclick => "closeNav()" %>
-            </li>
+            <% if !current_user.nil? %>
+              <li>
+                  <%= link_to 'View My Profile', current_user, :onclick => "closeNav()" %>
+              </li>
+            <% end %>
 <!--             <li>
                 <a href="#services" onclick = $("#menu-close").click(); >Services</a>
             </li>
