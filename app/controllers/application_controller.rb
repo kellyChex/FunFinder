@@ -6,11 +6,14 @@ class ApplicationController < ActionController::Base
   def index
   	@users = User.all
   	@events = Event.all
+    @tags = Tag.all
 
     if !params[:search_string].nil?
         search_string = params[:search_string].strip
-        @searched = Event.where("title LIKE '%#{search_string}%'")
+        @searchedEvents = Event.where("title LIKE '%#{search_string}%'")
+        @searchedTags = Tag.where("name LIKE '%#{search_string}%'")
     end
   end
+
 
 end

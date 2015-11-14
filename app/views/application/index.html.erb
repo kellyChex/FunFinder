@@ -30,8 +30,11 @@
     <%= render 'map' %>
 
     *****************************
-    <% if !@searched.nil? %>
-      <%= @searched.to_s %>
+    <% if !@searchedEvents.nil? %>
+      <%= @searchedEvents.to_s %>
+    <% end %>
+    <% if !@searchedTags.nil? %>
+      <%= @searchedTags.to_s %>
     <% end %>
 
     <!-- Footer -->

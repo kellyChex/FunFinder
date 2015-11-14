@@ -4,7 +4,7 @@
     		<%= image_tag ("funfinder-logo4.png") %>
             <h3>Because Fun Is Everywhere</h3>
             <form action ='/' method='get'>
-              <label for="word_search_input">Search by Words</label>
+              <label for="word_search_input">Find Fun:</label>
               <input id="word_search_input" type="text" name="search_string" />
               <input type="submit" value="Search" />
             </form>
@@ -13,17 +13,33 @@
         </div>
 
         <p>
-           <h1> Hello </h1>
-           <% if !@searched.nil? %>
-            <% if !@searched.empty? %>
+          <% if !@searchedEvents.nil? %>
+            <% if !@searchedEvents.empty? %>
               <h3>Event(s) found:</h3>
-                <% @searched.each do |event| %>
-                  <%= link_to event.title, event %><br>
+              <% @searchedEvents.each do |event| %>
+                <%= link_to event.title, event %><br>
+              <% end %>
+              <% if !@searchedTags.nil? %>
+                <% if !@searchedTags.empty? %>
+                  <h3>Recipes found:</h3>
+                  <% @searchedTags.each do |tag| %>
+                    <%= link_to tag.event.title, tag.event %><br>
+                  <% end %>
                 <% end %>
+              <% end %>
+            <% elsif %>
+              <% if !@searchedTags.nil? %>
+                <% if !@searchedTags.empty? %>
+                  <h3>Recipes found:</h3>
+                  <% @searchedTags.each do |tag| %>
+                    <%= link_to tag.event.title, tag.event %><br>
+                  <% end %>
+                <% end %>
+              <% end %>
             <% else %>
-              <h3>No Events Found</h3>
+            <h3>No Events Found</h3>
             <% end %>
           <% end %>
-         </p>
+        </p>
 
     </header>
