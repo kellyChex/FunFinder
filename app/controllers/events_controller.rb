@@ -139,9 +139,5 @@ end
   def event_params
     params.require(:event).permit(:title, :description, :image, :start_date, :end_date, :location, :start_time,:end_time, :user_id, :latitude, :longitude, tags_attributes: [:id, :name, :_destroy])
   end
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 6ee61af05fb2aa80ce4f4c64744f8aeba7e78015
 end
