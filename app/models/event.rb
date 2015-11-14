@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
 
+
   belongs_to :user
   has_many :tags, dependent: :destroy
 
@@ -8,7 +9,7 @@ class Event < ActiveRecord::Base
   validates :start_date, :end_date, :presence => true
 
   #location validation
-  
+
   validates :start_time, :presence => true
   validates :end_time, :presence => true
   validate :end_after_start

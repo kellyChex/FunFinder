@@ -3,7 +3,27 @@
         <div class="text-vertical-center">
             <h1>Fun Finder</h1>
             <h3>Because Fun Is Everywhere</h3>
+            <form action ='/' method='get'>
+              <label for="word_search_input">Search by Words</label>
+              <input id="word_search_input" type="text" name="search_string" />
+              <input type="submit" value="Search" />
+            </form>
             <br>
             <a href="#about" class="btn btn-dark btn-lg">Find Fun</a>
         </div>
+
+        <p>
+           <h1> Hello </h1>
+           <% if !@searched.nil? %>
+            <% if !@searched.empty? %>
+              <h3>Event(s) found:</h3>
+                <% @searched.each do |event| %>
+                  <%= link_to event.title, event %><br>
+                <% end %>
+            <% else %>
+              <h3>No Events Found</h3>
+            <% end %>
+          <% end %>
+         </p>
+
     </header>

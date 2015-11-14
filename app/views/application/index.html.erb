@@ -29,6 +29,10 @@
     <!-- Map -->
     <%= render 'map' %>
 
+    *****************************
+    <% if !@searched.nil? %>
+      <%= @searched.to_s %>
+    <% end %>
 
     <!-- Footer -->
     <%= render 'footer' %>

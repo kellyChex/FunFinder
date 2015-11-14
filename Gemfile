@@ -39,6 +39,9 @@ gem 'geocoder'
 #Use jQuery-turbolinks to resolve google map api conflicts with Turbolinks
 gem 'jquery-turbolinks'
 
+#Textacular exposes full text search capabilities from PostgreSQL, extending ActiveRecord with scopes making search easy and fun!
+gem 'textacular', "~> 3.0", require: 'textacular/rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
