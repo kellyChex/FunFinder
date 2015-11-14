@@ -8,7 +8,10 @@ class Event < ActiveRecord::Base
   validates :start_date, :end_date, :presence => true
 
   #location validation
-  
+  geocoded_by :location
+  validates :location, :presence => true
+  after_validation :geocode, :if => :location_changed?
+
   validates :start_time, :presence => true
   validates :end_time, :presence => true
   validate :end_after_start

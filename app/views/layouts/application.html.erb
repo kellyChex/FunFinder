@@ -17,11 +17,9 @@
 
 <div class="login">
   <% if user_signed_in? %>
-    <%= image_tag current_user.image.url(:thumb) %>
+    <%= image_tag ("funfinder-logo3.png"), class: "logo" %>
     Logged in as <strong><%= current_user.username %></strong>
-    <%= link_to 'Edit Account', edit_user_registration_path, class: "nav-top" %>
-    <%= link_to 'View My Profile', current_user, class: "nav-top" %>
-    <%= link_to "Logout", destroy_user_session_path, class: "log-out", method: :delete %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
   <% else %>
     <%= link_to "Sign Up", new_user_registration_path, class: "nav-top"  %>
     <%= link_to "Login", new_user_session_path, class: "nav-top" %>
