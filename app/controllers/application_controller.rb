@@ -8,10 +8,12 @@ class ApplicationController < ActionController::Base
   	@events = Event.all
     @tags = Tag.all
 
+
     if !params[:search_string].nil?
-        search_string = params[:search_string].strip
-        @searchedEvents = Event.where("title LIKE '%#{search_string}%'")
-        @searchedTags = Tag.where("name LIKE '%#{search_string}%'")
+        search_string = params[:search_string].strip.downcase
+        search_string = search_string.gsub("'", "\''")
+        @searchedEvents = Event.where("LOWER(title) LIKE '%#{search_string}%'")
+        @searchedTags = Tag.where("LOWER(name) LIKE '%#{search_string}%'")
         render "search.html.erb"
     end
 
