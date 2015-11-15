@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
-  resources :tags
   devise_for :users, :controllers => { registrations: 'registrations'}
+  resources :events
+  resources :tags
+  resources :users, :only => [:show]
+  root to: "application#index"
 
   match('/users/:id/follow', {:via => :post, :to => 'users#follow'})
   match('/users/:id/unfollow', {:via => :delete, :to => 'users#unfollow'})
   match('/events/:id/attend', {:via => :post, :to => 'events#attend'})
   match('/events/:id/unattend', {:via => :delete, :to => 'events#unattend'})
 
-  resources :events
 
-  resources :users, :only => [:show]
 
-  root to: "application#index"
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
