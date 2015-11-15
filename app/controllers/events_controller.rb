@@ -45,8 +45,16 @@ class EventsController < ApplicationController
     @event.user_id = current_user.id
     @attendances = Attendance.where(:event_id => @event.id)
     @event.save
-    attend
-    
+    if @event.update(event_params)
+      attend
+    else
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+
+
 
   end
 
