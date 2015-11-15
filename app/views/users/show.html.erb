@@ -85,16 +85,18 @@
         <div class="col-md-12">
             <% if current_user != @user %>
             	<% 	if Following.where(:user_id => current_user.id, :followed_id => @user.id).blank? %>
-            		<%= link_to 'Follow', '/users/' + @user.id.to_s + '/follow', :method => :post %> |
+            		<%= link_to 'Follow', '/users/' + @user.id.to_s + '/follow', :method => :post %> 
             	<% else %> 
-            		<%= link_to 'Unfollow', '/users/' + @user.id.to_s + '/unfollow', :method => :delete %> |
+            		<%= link_to 'Unfollow', '/users/' + @user.id.to_s + '/unfollow', :method => :delete %> 
             	<% end %>
             <% else %>
-                <%= link_to 'New Event', new_event_path %> |
+                <%= link_to 'New Event', new_event_path %> 
             <% end %> 
 
-            <%= link_to 'Edit', edit_user_registration_path(@user) %> |
-            <%= link_to 'Back', root_path %>
+            <% if @user.id == current_user.id %>
+                | <%= link_to 'Edit', edit_user_registration_path(@user) %>
+            <% end %>
+
         </div>
     </div>
 </div>
