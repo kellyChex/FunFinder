@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
 
+
   belongs_to :user
   has_many :tags, dependent: :destroy
 
@@ -8,6 +9,7 @@ class Event < ActiveRecord::Base
   validates :start_date, :end_date, :presence => true
 
   #location validation
+
   geocoded_by :location
   validates :location, :presence => true
   after_validation :geocode, :if => :location_changed?
