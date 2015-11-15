@@ -12,7 +12,6 @@ describe 'devise user account sign up', :type => :feature do
 
     click_button 'Sign up'
     expect(page).to have_xpath("//img[contains(@src, 'headshot.png')]")
-    visit '/'
-    expect(page).to have_content 'View My Profile'
+    expect(page).to have_content 'Welcome! You have signed up successfully.'
   end
 end

@@ -13,7 +13,6 @@ describe "adding map to event", :type => :feature do
    expect(page).to have_content 'Welcome! You have signed up successfully.'
 
    visit '/events'
-
    click_link('New Event')
    fill_in 'Title', :with => 'New Event'
    attach_file 'event_image', '../images/headshot.png'
