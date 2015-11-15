@@ -7,10 +7,26 @@
 	color: white;
 	height: 100px;
 	padding-left: 20px;
+
 	a {
 		color: #ccc;
 	}
 }
+
+#search_form {
+	position: absolute;
+	right: 100px;
+	top: 30px;
+}
+
+#word_search_input {
+	color: black;
+}
+
+.form_button {
+	color: black;
+}
+
 
 .event_list {
 	color: white;
@@ -76,4 +92,3 @@
     }
   }
 }
-
