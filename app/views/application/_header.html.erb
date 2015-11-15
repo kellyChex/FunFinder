@@ -1,13 +1,9 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-    		<%= image_tag ("funfinder-logo4.png") %>
+    		<%= image_tag ("funfinder-logo4.png"), :class => "logo-banner" %>
             <h3>Because Fun Is Everywhere</h3>
             <br>
-            <a href="#about" class="btn btn-dark btn-lg">Find Fun</a>
-        </div>
-
-    </header>
 
 <!-- THIS IS THE EVENT CAROUSEL -->
 			<div class="container">
@@ -16,7 +12,7 @@
 					  <div class="carousel-inner">
 
 					    <div class="item active">
-					      <div class=z"col-xs-4"><a href="#1"><img src="http://placehold.it/300/f44336/000000" class="img-responsive"></a></div>
+					      <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/f44336/000000" class="img-responsive"></a></div>
 					    </div>
 
 					    <% @events.each do |event| %>
