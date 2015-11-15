@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
         @searchedTags = Tag.where("name LIKE '%#{search_string}%'")
         render "search.html.erb"
     end
+
   end
 
 
