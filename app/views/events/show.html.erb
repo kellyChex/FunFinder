@@ -83,12 +83,18 @@
       <hr>
       <% if user_signed_in? %>
         <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
-          <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %> |
+          <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %> 
         <% else %>
-          <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %> |
+          <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %> 
         <% end %>
-        <%= link_to 'Edit', edit_event_path(@event) %> |
       <% end %>
+
+      <% if @event.user_id == current_user.id %>
+        | <%= link_to 'Edit', edit_event_path(@event) %>
+      <% end %>
+
+
+
     </div>
     <div class="col-md-4">
       <div id="map"></div>
