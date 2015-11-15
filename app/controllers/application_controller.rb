@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
         search_string = params[:search_string].strip
         @searched = Event.where("title LIKE '%#{search_string}%'")
     end
+
   end
 
 end

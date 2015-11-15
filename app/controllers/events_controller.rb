@@ -42,9 +42,11 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.user_id = current_user.id
     @attendances = Attendance.where(:event_id => @event.id)
     @event.save
     attend
+    
 
   end
 
