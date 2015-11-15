@@ -1,0 +1,35 @@
+
+<%= render 'navigation' %>
+
+
+<p>
+  <% if !@searchedEvents.nil? %>
+    <% if !@searchedEvents.empty? %>
+      <h3>Event(s) found:</h3>
+      <% @searchedEvents.each do |event| %>
+        <%= link_to event.title, event %><br>
+      <% end %>
+      <% if !@searchedTags.nil? %>
+        <% if !@searchedTags.empty? %>
+          <h3>Recipes found:</h3>
+          <% @searchedTags.each do |tag| %>
+            <%= link_to tag.event.title, tag.event %><br>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% elsif %>
+      <% if !@searchedTags.nil? %>
+        <% if !@searchedTags.empty? %>
+          <h3>Recipes found:</h3>
+          <% @searchedTags.each do |tag| %>
+            <%= link_to tag.event.title, tag.event %><br>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% else %>
+    <h3>No Events Found</h3>
+    <% end %>
+  <% end %>
+</p>
+
+<%= link_to 'Back', root_path %>
