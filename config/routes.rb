@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations'}
+  resources :users, :only => [:show]
   resources :events
   resources :tags
-  resources :users, :only => [:show]
+  
   root to: "application#index"
 
   match('/users/:id/follow', {:via => :post, :to => 'users#follow'})
