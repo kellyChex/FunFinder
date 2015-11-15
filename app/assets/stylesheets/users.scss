@@ -45,8 +45,8 @@
 
 .header {
 	color: white;
-	img {
-		width: 500px;
+	.logo-banner {
+		width: 700px;
 	}
 }
 
@@ -55,6 +55,7 @@
   .carousel-inner{
     > .item{
       transition: .6s ease-in-out all;
+
     }
     .active{
       &.left{
