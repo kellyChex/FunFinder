@@ -3,7 +3,7 @@
 <head>
   <title>FunFinder</title>
 
-  <script async defer type="text/javascript" src="http://maps.googleapis.com/maps/api/js?callback=initMap&libraries=places"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <%= stylesheet_link_tag 'application', media: 'all'%>
   <%= javascript_include_tag 'application', 'events'%>
@@ -36,7 +36,7 @@
     <div id= "search_form">
       <form action ='/' method='get'>
         <label for="word_search_input"></label>
-        <input id="word_search_input" type="text" name="search_string" />
+        <input id="word_search_input" type="text" placeholder =" Search  For  Event" name="search_string" />
         <button type="submit" class="btn btn-default form_button">
           <span class="glyphicon glyphicon-search"></span>
         </button>
