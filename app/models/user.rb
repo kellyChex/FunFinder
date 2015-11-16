@@ -4,8 +4,9 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 	       :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :followers, :class_name => 'Followings', :foreign_key => 'user_id', dependent: :destroy
-    has_many :following, :class_name => 'Followings', :foreign_key => 'follower_id', dependent: :destroy
+    has_many :followers, :class_name => 'Followings', :foreign_key => 'user_id'
+    has_many :following, :class_name => 'Followings', :foreign_key => 'follower_id'
+    has_many :followings, dependent: :destroy
     has_many :events, dependent: :destroy
     has_attached_file :image, styles: { thumb: "64x64", med: "100x100", large: "200x200" }, dependent: :destroy, :default_url => "default_:style.png"
 
