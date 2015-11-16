@@ -14,7 +14,7 @@
       <% if !@searchedTags.nil? %>
         <% if !@searchedTags.empty? %>
           <% @searchedTags.each do |tag| %>
-            <% if !@storage.include?(tag.name) %>
+            <% if !@storage.include?(tag.event.title) %>
               <%= link_to tag.event.title, tag.event %><br>
             <% end %>
           <% end %>
