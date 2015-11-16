@@ -5,9 +5,8 @@
 .login {
 	background-color: black;
 	color: white;
-	height: 100px;
+	height: 60px;
 	padding-left: 20px;
-
 	a {
 		color: #ccc;
 	}
@@ -16,29 +15,32 @@
 #search_form {
 	position: absolute;
 	right: 5%;
-	top: 40px;
+	top: 15px;
 }
 
 .searchform {
 	display: inline;
+	line-height: 60px;
+	vertical-align: middle;
 }
 
 #word_search_input {
 	color: black;
 	width: 350px;
-	height: 50px;
+	height: 30px;
 	border-radius: 8px;
 	border: 1px #000 solid;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 .form_button {
 	color: black;
-	width: 60px;
-	height: 50px;
+	width: 45px;
+	height: 30px;
 	border-radius: 8px;
 	border: 1px #000 solid;
-	font-size: 25px;
+	font-size: 15px;
+	margin-top: -10px;
 }
 
 
@@ -51,14 +53,12 @@
 	a {
 		color: white;
 		margin-left: 40px;
-		&:hover {
-			color: orange;
-		}
 	}
 }
 
 .header {
 	color: white;
+
 	.logo-banner {
 		width: 700px;
 	}

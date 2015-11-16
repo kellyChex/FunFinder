@@ -2,6 +2,7 @@
 <%= render 'navigation' %>
 
 <p id="notice"><%= notice %></p>
+
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -73,7 +74,7 @@
             <% @eventees.each do |eventee| %>
             <tr>
               <td><%= eventee.username%></td>
-              <td><%= link_to 'Show', @user %></td>
+              <td><%= link_to 'Show', @user, class: "lnk thi" %></td>
             </tr>
             <% end %>
           <% end %>
@@ -83,14 +84,14 @@
       <hr>
       <% if user_signed_in? %>
         <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
-          <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %> 
+          <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %>
         <% else %>
-          <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %> 
+          <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %>
         <% end %>
       <% end %>
 
       <% if @event.user_id == current_user.id %>
-        | <%= link_to 'Edit', edit_event_path(@event) %>
+        | <%= link_to 'Edit', edit_event_path(@event), class: "lnk sec" %>
       <% end %>
 
 
@@ -101,6 +102,7 @@
     </div>
   </div>
 </div>
+
 <script>
   function initMap() {
     var latitude = document.getElementById("latitude").getAttribute("value");
