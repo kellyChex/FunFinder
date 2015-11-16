@@ -3,10 +3,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = Event.all
+    @all_attendances = Attendance.all
 
 # This shows who you are following
     if current_user.id == @user.id
-
       @followings = Following.where(:user_id => current_user.id)
       @followed = []
       @followings.each do |following|
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
 
 # This shows what events you are going to
     if current_user.id == @user.id
-
       @attendances = Attendance.where(:user_id => current_user.id)
       @attended = []
       @attendances.each do |attendance|
