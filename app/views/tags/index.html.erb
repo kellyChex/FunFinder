@@ -16,9 +16,9 @@
       <tr>
         <td><%= tag.name %></td>
         <td><%= tag.event %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', tag, class: "lnk thi" %></td>
+        <td><%= link_to 'Edit', edit_tag_path(tag), class: "lnk sec" %></td>
+        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' }, class: "lnk dan" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Tag', new_tag_path %>
+<%= link_to 'New Tag', new_tag_path, class: "lnk pri" %>
