@@ -15,16 +15,24 @@
 
 #search_form {
 	position: absolute;
-	right: 100px;
-	top: 30px;
+	right: 5%;
+	top: 40px;
+}
+
+.searchform {
+	display: inline;
 }
 
 #word_search_input {
 	color: black;
+	width: 350px;
+	height: 50px;
 }
 
 .form_button {
 	color: black;
+	width: 100px;
+	height: 50px;
 }
 
 

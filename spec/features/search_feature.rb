@@ -35,7 +35,7 @@ describe 'search for an event on the landing page', :type => :feature do
 
    # Search Input
    visit '/'
-   fill_in 'Find Fun:', :with => 'New Event'
+   fill_in 'word_search_input', :with => 'New Event'
    click_button('Search')
 
    expect(page).to have_content 'New Event'
@@ -76,7 +76,7 @@ describe 'search for an event on the landing page', :type => :feature do
 
    # Search Input
    visit '/'
-   fill_in 'Find Fun:', :with => 'tag'
+   fill_in 'word_search_input', :with => 'tag'
    click_button('Search')
 
    expect(page).to have_content 'New Event'
