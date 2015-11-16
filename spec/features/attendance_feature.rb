@@ -30,7 +30,6 @@ describe 'attend feature for an event', :type => :feature do
    fill_in 'event_start_time', :with => '00:45:00.000'
    fill_in 'event_end_time', :with => '13:09:00.000'
    click_button('Create Event')
-
    expect(page).to have_content 'myDescription'
 
     # User Attends Event
