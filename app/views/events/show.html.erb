@@ -74,7 +74,7 @@
             <% @eventees.each do |eventee| %>
             <tr>
               <td><%= eventee.username%></td>
-              <td><%= link_to 'Show', @user %></td>
+              <td><%= link_to 'Show', @user, class: "lnk thi" %></td>
             </tr>
             <% end %>
           <% end %>
@@ -91,7 +91,7 @@
       <% end %>
 
       <% if @event.user_id == current_user.id %>
-        | <%= link_to 'Edit', edit_event_path(@event) %>
+        | <%= link_to 'Edit', edit_event_path(@event), class: "lnk sec" %>
       <% end %>
 
 

@@ -10,7 +10,7 @@
                     <hr class="small">
 
                     <% if user_signed_in? %>
-                        <%= link_to 'New Event', new_event_path, :class => "event_list" %>
+                        <%= link_to 'New Event', new_event_path, :class => "lnk event_list pri" %>
                     <% end %>
 
                     <table class="event_list">
@@ -31,7 +31,7 @@
                                     <td><%= event.description %></td>
 
                                     <% if user_signed_in? %>
-                                        <td><%= link_to 'Show', event, class: "show" %></td>
+                                        <td><%= link_to 'Show', event, class: "lnk thi" %></td>
                                     <% end %>
                                 </tr>
                             <% end %>

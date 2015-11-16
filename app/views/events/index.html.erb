@@ -29,7 +29,7 @@
         <td><%= event.location %></td>
         <td><%= event.start_time.strftime("%I:%M %p")%></td>
         <td><%= event.end_time.strftime("%I:%M %p")%></td>
-        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Show', event, class: "lnk thi" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,5 +38,5 @@
 <br>
 
 <% if user_signed_in? %>
-  <%= link_to 'New Event', new_event_path %>
+  <%= link_to 'New Event', new_event_path, class: "lnk pri" %>
 <% end %>

@@ -1,178 +1,53 @@
 // ALL BUTTON STYLES GO HERE
-
-.nav-top {
-  border: 2px solid $brand-color;
+.lnk {
+  border: 2px solid;
   border-radius: 10px;
-  color: $color-1;
   font-family: sans-serif;
+  vertical-align: middle;
   font-size: 15px;
+  line-height: 60px;
+  color: gray;
   padding: 5px;
   margin: 5px;
   text: {
     transform: uppercase;
   }
   &:hover {
-    border: 2px solid $color-1;
-    color: $brand-color;
     text-decoration: none;
   }
 }
 
-.log-out {
-  border: 2px solid $brand-color;
-  border-radius: 10px;
-  color: $color-1;
-  font-family: sans-serif;
-  font-size: 15px;
-  padding: 5px;
-  margin: 5px;
-  text: {
-    transform: uppercase;
+.def {
+  &:hover {
+    border: 2px solid gray;
+    color: gray;
   }
+}
+
+.pri {
+  &:hover {
+    border: 2px solid $color-1;
+    color: $color-1;
+  }
+}
+
+.sec {
+  &:hover {
+    border: 2px solid $color-3;
+    color: $color-3;
+  }
+}
+
+.thi {
+  &:hover {
+    border: 2px solid $color-2;
+    color: $color-2;
+  }
+}
+
+.dan {
   &:hover {
     border: 2px solid $brand-color;
     color: $brand-color;
-    text-decoration: none;
-  }
-}
-
-.show {
-  font-family: sans-serif;
-  font-size: 10px;
-  color: $color-1;
-  padding: 5px;
-  margin: 5px;
-  text: {
-     transform: uppercase;
-  }
-  &:hover {
-    border: 1px solid $color-1;
-    background-color: $color-3;
-    border-radius: 3px;
-    text-decoration: none;
-  }
-}
-
-.new {
-  font-family: sans-serif;
-  font-size: 10px;
-  color: $color-1;
-  padding: 5px;
-  margin: 5px;
-  text: {
-    transform: uppercase;
-  }
-  &:hover {
-    border: 1px solid $color-1;
-    background-color: $color-3;
-    border-radius: 3px;
-    text-decoration: none;
-  }
-}
-
-.edit {
-  font-family: sans-serif;
-  font-size: 10px;
-  color: $color-1;
-  padding: 5px;
-  margin: 5px;
-  text: {
-     transform: uppercase;
-  }
-  &:hover {
-    border: 1px solid $color-1;
-    background-color: $color-3;
-    border-radius: 3px;
-    text-decoration: none;
-  }
-}
-
-.back{
-  font-family: sans-serif;
-  font-size: 10px;
-  color: $color-1;
-  padding: 5px;
-  margin: 5px;
-  text: {
-     transform: uppercase;
-  }
-  &:hover {
-    border: 1px solid $color-1;
-    background-color: $color-3;
-    border-radius: 3px;
-    text-decoration: none;
-  }
-}
-
-.follow {
-  font-family: sans-serif;
-  font-size: 10px;
-  color: $color-2;
-  padding: 5px;
-  margin: 5px;
-  text: {
-     transform: uppercase;
-  }
-  &:hover {
-    border: 2px solid $color-1;
-    background-color: $color-2;
-    border-radius: 3px;
-    color: $color-1;
-    text-decoration: none;
-  }
-}
-
-.unfollow {
-  font-family: sans-serif;
-  font-size: 10px;
-  color: $brand-color;
-  padding: 5px;
-  margin: 5px;
-  text: {
-     transform: uppercase;
-  }
-  &:hover {
-    border: 2px solid $brand-color;
-    background-color: $brand-color;
-    border-radius: 3px;
-    color: $color-1;
-    text-decoration: none;
-  }
-
-}
-
-.attend {
-  font-family: sans-serif;
-  font-size: 10px;
-  color: $color-1;
-  padding: 5px;
-  margin: 5px;
-  text: {
-     transform: uppercase;
-  }
-  &:hover {
-    border: 2px solid $color-1;
-    background-color: $color-2;
-    border-radius: 3px;
-    color: $color-1;
-    text-decoration: none;
-  }
-}
-
-.unattend {
-  font-family: sans-serif;
-  font-size: 10px;
-  color: $brand-color;
-  padding: 5px;
-  margin: 5px;
-  text: {
-     transform: uppercase;
-  }
-  &:hover {
-    border: 2px solid $brand-color;
-    background-color: $brand-color;
-    border-radius: 3px;
-    color: $color-1;
-    text-decoration: none;
   }
 }

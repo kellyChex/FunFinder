@@ -27,7 +27,7 @@
                         <% @my_events.each do |event| %>
                             <tr>
                                 <td><%= event.title %></td>
-                                <td><%= link_to 'Show', event, class: "show" %></td>
+                                <td><%= link_to 'Show', event, class: "lnk thi" %></td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -48,7 +48,7 @@
                         <% @my_followed_events.each do |event| %>
                             <tr>
                                 <td><%= event.title %></td>
-                                <td><%= link_to 'Show', event, class: "show" %></td>
+                                <td><%= link_to 'Show', event, class: "lnk thi" %></td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -69,7 +69,7 @@
                         <% @my_followeds.each do |user| %>
                             <tr>
                                 <td><%= user.username%></td>
-                                <td><%= link_to 'Show', user, class: "show" %></td>
+                                <td><%= link_to 'Show', user, class: "lnk thi" %></td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -90,11 +90,11 @@
             		<%= link_to 'Unfollow', '/users/' + @user.id.to_s + '/unfollow', :method => :delete %>
             	<% end %>
             <% else %>
-                <%= link_to 'New Event', new_event_path %>
+                <%= link_to 'New Event', new_event_path, class: "lnk pri" %>
             <% end %>
 
             <% if @user.id == current_user.id %>
-                | <%= link_to 'Edit', edit_user_registration_path(@user) %>
+                | <%= link_to 'Edit', edit_user_registration_path(@user), class: "lnk sec" %>
             <% end %>
         </div>
     </div>
