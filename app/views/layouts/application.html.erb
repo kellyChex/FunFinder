@@ -21,9 +21,9 @@
     Logged in as <strong><%= current_user.username %></strong>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <div id= "search_form">
-      <form action ='/' method='get'>
-        <label for="word_search_input">Find Fun:</label>
-        <input id="word_search_input" type="text" name="search_string" />
+      <form action ='/' method='get' class= 'searchform'>
+        <label for="word_search_input"></label>
+        <input id="word_search_input" type="text" placeholder ="Search For Event" name="search_string" />
         <input type="submit" class="form_button" value="Search" />
       </form>
     </div>
@@ -32,7 +32,7 @@
     <%= link_to "Login", new_user_session_path %>
     <div id= "search_form">
       <form action ='/' method='get'>
-        <label for="word_search_input">Find Fun:</label>
+        <label for="word_search_input"></label>
         <input id="word_search_input" type="text" name="search_string" />
         <input type="submit" class="form_button" value="Search" />
       </form>
@@ -42,6 +42,8 @@
   <p class="alert"><%= alert %></p>
 </div>
 </div>
+
+
 
 
 <%= yield %>

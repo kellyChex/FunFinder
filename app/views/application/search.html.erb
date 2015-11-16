@@ -6,21 +6,24 @@
   <% if !@searchedEvents.nil? %>
     <% if !@searchedEvents.empty? %>
       <h3>Event(s) found:</h3>
+      <% @storage = [] %>
       <% @searchedEvents.each do |event| %>
+        <% @storage << event.title %>
         <%= link_to event.title, event %><br>
       <% end %>
       <% if !@searchedTags.nil? %>
         <% if !@searchedTags.empty? %>
-          <h3>Recipes found:</h3>
           <% @searchedTags.each do |tag| %>
-            <%= link_to tag.event.title, tag.event %><br>
+            <% if !@storage.include?(tag.name) %>
+              <%= link_to tag.event.title, tag.event %><br>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% elsif %>
       <% if !@searchedTags.nil? %>
         <% if !@searchedTags.empty? %>
-          <h3>Recipes found:</h3>
+          <h3>Events found:</h3>
           <% @searchedTags.each do |tag| %>
             <%= link_to tag.event.title, tag.event %><br>
           <% end %>
