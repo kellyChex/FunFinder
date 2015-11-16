@@ -5,21 +5,30 @@
     <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top"  onclick = $("#menu-close").click(); ><%= current_user.username %></a>
-            </li>
-
-            <li>
-                <%= image_tag current_user.image.url(:thumb) %>
-            </li>
-
-            <li>
-                <a href="/" onclick = $("#menu-close").click(); >Home</a>
+              <% if user_signed_in? %>
+                <%= link_to current_user.username, current_user, :onclick => "closeNav()" %>
+              <% end %>
             </li>
             <li>
+                <% if user_signed_in? %>
+                  <%= image_tag current_user.image.url(:thumb) %>
+                <% else %>
+                  <%= image_tag ("funfinder-logo3.png"), class: "logo" %>
+                <% end %>
+            </li>
+            <li>
+                <%= link_to 'Home', root_path, :onclick => "closeNav()" %>
+            </li>
+            <li>
+              <% if user_signed_in? %>
                 <%= link_to 'View My Profile', current_user, :onclick => "closeNav()" %>
+              <% end %>
             </li>
+            <li>
+                <%= link_to 'All Events', events_path %>
+            </li>
+
 <!--             <li>
                 <a href="#services" onclick = $("#menu-close").click(); >Services</a>
             </li>
@@ -29,6 +38,7 @@
             <li>
                 <a href="#contact" onclick = $("#menu-close").click(); >Contact</a>
             </li> -->
+
         </ul>
     </nav>
 

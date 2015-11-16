@@ -42,9 +42,19 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.user_id = current_user.id
     @attendances = Attendance.where(:event_id => @event.id)
     @event.save
-    attend
+    if @event.update(event_params)
+      attend
+    else
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+
+
 
   end
 
@@ -78,7 +88,14 @@ end
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+# DELETE ALL ATTENDANCES THAT THIS EVENT 
+    @attendances = Attendance.where(:event_id => @event)
+    @attendances.each do |attendance|
+      attendance.destroy
+    end
+    
     @event.destroy
+
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }

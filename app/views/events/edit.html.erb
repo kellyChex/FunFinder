@@ -1,6 +1,5 @@
 <h1>Editing Event</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @event, class: "show" %> |
-<%= link_to 'Back', events_path, class: "back" %>
+<%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', @event %>

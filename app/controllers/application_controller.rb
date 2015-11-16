@@ -3,8 +3,21 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
 
-  def index 
+  def index
   	@users = User.all
   	@events = Event.all
+    @tags = Tag.all
+
+
+    if !params[:search_string].nil?
+        search_string = params[:search_string].strip.downcase
+        search_string = search_string.gsub("'", "\''")
+        @searchedEvents = Event.where("LOWER(title) LIKE '%#{search_string}%'")
+        @searchedTags = Tag.where("LOWER(name) LIKE '%#{search_string}%'")
+        render "search.html.erb"
+    end
+
   end
+
+
 end
