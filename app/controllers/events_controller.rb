@@ -85,7 +85,6 @@ def add_tag
   render 'show.html.erb'
 end
 
-
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy

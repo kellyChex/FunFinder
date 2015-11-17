@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
   validate :end_after_start
   validates :location, :presence => true
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }, size: { in: 0..10.megabytes }
- 
+
   geocoded_by :location
   after_validation :geocode, :if => :location_changed?
 
@@ -21,7 +21,6 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :tags,
                                 # reject_if: proc { |attributes| attributes['name'].blank? },
                                 allow_destroy: true
-
 
   private
 
