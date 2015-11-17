@@ -99,10 +99,11 @@
         <% end %>
       <% end %>
 
-      <% if @event.user_id == current_user.id %>
-        | <%= link_to 'Edit', edit_event_path(@event), class: "lnk sec" %>
+      <% if user_signed_in? %>
+        <% if @event.user_id == current_user.id %>
+          | <%= link_to 'Edit', edit_event_path(@event), class: "lnk sec" %>
+        <% end %>
       <% end %>
-
 
 
     </div>
