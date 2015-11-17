@@ -22,7 +22,6 @@ class Event < ActiveRecord::Base
                                 reject_if: proc { |attributes| attributes['name'].blank? },
                                 allow_destroy: true
 
-
   private
 
   def end_after_start
