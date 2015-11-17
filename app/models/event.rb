@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :tags,
-                                # reject_if: proc { |attributes| attributes['name'].blank? },
+                                reject_if: proc { |attributes| attributes['name'].blank? },
                                 allow_destroy: true
 
 
