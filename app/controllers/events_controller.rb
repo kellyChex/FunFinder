@@ -6,6 +6,17 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @tags = Tag.all
+
+
+    @tag_names = []
+    @tags.each do |tag|
+      if !@tag_names.include?(tag.name)
+        @tag_names << tag.name
+      end 
+    end
+
+
+    
   end
 
   # GET /events/1
@@ -26,17 +37,12 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.tags.build
-    p "*********NEW METHOD**********"
-    p @event
-    p @event.tags
+
   end
 
   # GET /events/1/edit
   def edit
     @event.tags.build
-    p "**********EDIT METHOD*********"
-    p @event
-    p @event.tags
   end
 
   # POST /events
@@ -44,9 +50,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
-    p "**********CREATE METHOD*********"
-    p @event
-    p @event.tags
 
     @attendances = Attendance.where(:event_id => @event.id)
 
@@ -63,10 +66,6 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-
-    p "**********UPDATE METHOD*********"
-    p @event
-    p @event.tags
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
@@ -102,9 +101,6 @@ class EventsController < ApplicationController
     @user = current_user
 
     if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank?
-    p "**********ATTEND METHOD*********"
-    p @event
-    p @event.tags
       @attendance = Attendance.new
       @attendance.event_id = @event.id
       @attendance.user_id = current_user.id
