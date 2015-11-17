@@ -3,40 +3,66 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Location</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.start_date %></td>
-        <td><%= event.end_date %></td>
-        <td><%= event.location %></td>
-        <td><%= event.start_time.strftime("%I:%M %p")%></td>
-        <td><%= event.end_time.strftime("%I:%M %p")%></td>
-        <td><%= link_to 'Show', event %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+<div class="row text-center">
 <% if user_signed_in? %>
-  <%= link_to 'New Event', new_event_path %>
+  <%= link_to 'New Event', new_event_path, class: "lnk pri" %>
 <% end %>
+</div>
+
+
+<!-- ISOTOPE IMAGE FILTERING GRID -->
+<!-- **************************** -->
+    <div id="tf-works">
+        <div class="container col-lg-12"> <!-- Container -->
+            <div class="section-title text-center center">
+                <div class="clearfix"></div>
+            </div>
+            <div class="space"></div>
+
+<!-- ISOTOPE DATA FILTER SELECTION BY TAG -->
+            <div class="categories">
+                <ul class="cat">
+                    <li class="pull-left"><h4>Filter by Type:</h4></li>
+                    <li class="pull-right">
+                        <ol class="type">
+                            
+                            <li><a href="#" data-filter="*" class="active">All</a></li>
+
+                            <% @tag_names.each do |tag| %>
+                              <li><a href="#" data-filter=".<%= tag %>"><%= tag %></a></li>
+                            <% end %>
+                        </ol>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+<!-- BEGIN EVENTS GRID -->
+            <div id="lightbox" class="row">
+              <% @events.each do |event| %>
+                  <div class="col-sm-6 col-md-3 col-lg-2 
+
+                  <% event.tags.each do |tag| %>
+                  <%= tag.name %>
+                  <% end %>">
+
+                    <div class="portfolio-item">
+                      <a href="events/<%= event.id %>" >
+                      <div class="hover-bg">
+                        <div class="hover-text">
+                            <h4><%= event.title %></h4>
+                            <small><%= event.start_date %></small>
+                            <div class="clearfix"></div>
+                        </div>
+                      </a>
+                        <%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), event %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+ 
