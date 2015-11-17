@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require new
 //= require events
+//= require isotope
 //= require_tree .
