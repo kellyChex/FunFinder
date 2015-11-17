@@ -1,53 +1,64 @@
-    <!-- Header -->
-    <header id="top" class="header">
-        <div class="text-vertical-center">
-    		<%= image_tag ("funfinder-logo4.png"), :class => "logo-banner" %>
-            <h3>Because Fun Is Everywhere</h3>
-            <br>
+<!-- Header -->
+<header id="top" class="header">
+    <div class="text-vertical-center">
+		<%= image_tag ("funfinder-logo4.png"), :class => "logo-banner" %>
+        <h3>Because Fun Is Everywhere</h3>
+        <br>
 
 <!-- THIS IS THE EVENT CAROUSEL -->
-			<div class="container">
-				<div class="col-md-8 col-md-offset-2">
-					<div class="carousel slide multi-item-carousel" id="theCarousel">
-					  <div class="carousel-inner">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="carousel slide multi-item-carousel" id="theCarousel">
+				  <div class="carousel-inner">
 
+				  	<% @top_event.each do |event| %>
 					    <div class="item active">
-					      <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/f44336/000000" class="img-responsive"></a></div>
-					    </div>
-
-					    <% @events.each do |event| %>
-					    	<div class="item">
-					    		<div class="col-xs-4"><%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), event %></div>
+							<div class="col-xs-4 event-featured">
+								<div class="event-text">
+					    		<h2>FEATURED</h2>
+					    		<h3><%= event.title %></h3>
 					    	</div>
-					    <% end %>
+								<%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), event %>
+							</div>
+						</div>
+					<% end %>
 
-					  </div>
-					  <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-					  <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-					</div>
+				    <% @events.each do |event| %>
+				    	<div class="item">
+				    		<div class="col-xs-4 event-box">
+					    		<h2 class="event-text"><%= event.title %></h2>
+				    			<%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), event %>
+				    		</div>
+				    	</div>
+				    <% end %>
+
+				  </div>
+				  <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+				  <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
 				</div>
 			</div>
+		</div>
 
-			<script>
-				$('#theCarousel').carousel({
-				  interval: false
-				})
+		<script>
+			$('#theCarousel').carousel({
+			  interval: false
+			})
 
-				$('.multi-item-carousel .item').each(function(){
-				  var next = $(this).next();
-				  if (!next.length) {
-				    next = $(this).siblings(':first');
-				  }
-				  next.children(':first-child').clone().appendTo($(this));
+			$('.multi-item-carousel .item').each(function(){
+			  var next = $(this).next();
+			  if (!next.length) {
+			    next = $(this).siblings(':first');
+			  }
+			  next.children(':first-child').clone().appendTo($(this));
 
-				  if (next.next().length>0) {
-				    next.next().children(':first-child').clone().appendTo($(this));
-				  }
-				  else {
-				  	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-				  }
-				});
-			</script>
+			  if (next.next().length>0) {
+			    next.next().children(':first-child').clone().appendTo($(this));
+			  }
+			  else {
+			  	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+			  }
+			});
+		</script>
 
- 		</div>
-    </header>
+		</div>
+</header>
