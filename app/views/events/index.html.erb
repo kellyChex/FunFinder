@@ -28,8 +28,8 @@
                         <ol class="type">
                             <li><a href="#" data-filter="*" class="active">All</a></li>
 
-                            <% @tags.each do |tag| %>
-                              <li><a href="#" data-filter=".<%= tag.name %>"><%= tag.name %></a></li>
+                            <% @tag_names.each do |tag| %>
+                              <li><a href="#" data-filter=".<%= tag %>"><%= tag %></a></li>
                             <% end %>
                         </ol>
                     </li>

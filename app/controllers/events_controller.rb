@@ -6,6 +6,17 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @tags = Tag.all
+
+
+    @tag_names = []
+    @tags.each do |tag|
+      if !@tag_names.include?(tag.name)
+        @tag_names << tag.name
+      end 
+    end
+
+
+    
   end
 
   # GET /events/1
