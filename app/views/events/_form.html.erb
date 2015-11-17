@@ -49,14 +49,9 @@
     <%= f.time_field :end_time%>
   </div>
 
-  <p>
-    <strong>Tags:</strong>
-    <% @event.tags.each do |tag| %>
-      <%= tag.name%>
-    <% end %>
-  </p>
+ 
 
-  <h2>Edit Tags</h2>
+  <h2>Add Tags</h2>
   <%= f.fields_for :tags do |tag| %>
     <div class="tag_fields">
       <div class="field">

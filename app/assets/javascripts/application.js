@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery.geocomplete
 //= require bootstrap
-//= require new
 //= require events
 //= require isotope
 //= require_tree .
