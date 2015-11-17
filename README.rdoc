@@ -1,19 +1,22 @@
 Started GET "/recipes/get_random_recipe" for ::1 at 2015-11-05 08:56:25 -0800
-# Project Name
+# FunFinder
 
-TODO: Write a project description
+This is an application to find events happening in your local community. 
+
+## What You'll Need
+
+1. PostgreSQL 
+2. Rails
+3. Bundler
 
 ## Installation
 
-TODO: Describe the installation process
-
-## Usage
-
-Before uploading to Heroku, do this:
-$ bundle exec rake assets:precompile RAILS_ENV=production
-
-
-TODO: Write usage instructions
+1. Clone The GitHub Project
+(Proceed From Working Directory)
+2. Run: bundle install
+3. Run: rake db:create
+4. Run: pg_restore --verbose --clean --no-acl --no-owner -h localhost -U [postgres username] -d funFinder_development funfinder-backup.dump
+5. Run: rails s
 
 ## Contributing
 
@@ -25,12 +28,16 @@ TODO: Write usage instructions
 
 ## History
 
-TODO: Write history
+This project was started November 5th, 2015.
 
 ## Credits
 
-TODO: Write credits
+Kelly Chess - Founder
+Tobias Brysiewicz 
+Scott Pelo
+Tyler Henderson
+Max Harvey
 
 ## License
 
-TODO: Write license
+Copyright 2015 @ FunFinder
