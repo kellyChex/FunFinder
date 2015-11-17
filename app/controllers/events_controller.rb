@@ -81,12 +81,12 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-# DELETE ALL ATTENDANCES THAT THIS EVENT
+# DELETE ALL ATTENDANCES THAT THIS EVENT 
     @attendances = Attendance.where(:event_id => @event)
     @attendances.each do |attendance|
       attendance.destroy
     end
-
+    
     @event.destroy
 
     respond_to do |format|
