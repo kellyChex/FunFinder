@@ -7,13 +7,21 @@ class EventsController < ApplicationController
     @events = Event.all
     @tags = Tag.all
 
+
+    @tag_names = []
+    @tags.each do |tag|
+      if !@tag_names.include?(tag.name)
+        @tag_names << tag.name
+      end 
+    end
+
+
+    
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    @event.tags.build
-
     @event = Event.find(params[:id])
     @user = current_user
 
@@ -23,14 +31,13 @@ class EventsController < ApplicationController
       @attendees << attendance.user_id
     end
     @eventees = User.where(:id => @attendees)
-
   end
 
   # GET /events/new
   def new
     @event = Event.new
-    @Tag = Tag.new
     @event.tags.build
+
   end
 
   # GET /events/1/edit
@@ -43,19 +50,17 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
+
     @attendances = Attendance.where(:event_id => @event.id)
-    @event.save
-    if @event.update(event_params)
-      attend
-    else
-      respond_to do |format|
+
+    respond_to do |format|
+      if @event.save
+        format.html { attend }
+      else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
-
-
-
   end
 
   # PATCH/PUT /events/1
@@ -72,18 +77,6 @@ class EventsController < ApplicationController
     end
   end
 
-  #ADD Tag
-def add_tag
-  @event = Event.find(params[:id])
-  newTag = Tag.new(params[:tag])
-  if newTag.valid?
-    newTag.name.downcase! # ! alters the original
-    newTag.save
-    @event.tags << newTag
-    @event.save
-  end
-  render 'show.html.erb'
-end
 
 
   # DELETE /events/1
@@ -109,7 +102,6 @@ end
     @user = current_user
 
     if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank?
-
       @attendance = Attendance.new
       @attendance.event_id = @event.id
       @attendance.user_id = current_user.id

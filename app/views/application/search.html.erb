@@ -9,13 +9,15 @@
       <% @storage = [] %>
       <% @searchedEvents.each do |event| %>
         <% @storage << event.title %>
-        <%= link_to event.title, event %><br>
+        <%= event.title %>
+        <%= link_to 'Show', event, class: "lnk thi" %><br>
       <% end %>
       <% if !@searchedTags.nil? %>
         <% if !@searchedTags.empty? %>
           <% @searchedTags.each do |tag| %>
             <% if !@storage.include?(tag.event.title) %>
-              <%= link_to tag.event.title, tag.event %><br>
+            <%= tag.event.title %>
+            <%= link_to 'Show', tag.event, class: "lnk thi" %><br>
             <% end %>
           <% end %>
         <% end %>
@@ -25,7 +27,8 @@
         <% if !@searchedTags.empty? %>
           <h3>Events found:</h3>
           <% @searchedTags.each do |tag| %>
-            <%= link_to tag.event.title, tag.event %><br>
+          <%= tag.event.title %>
+          <%= link_to 'Show', tag.event, class: "lnk thi" %><br>
           <% end %>
         <% end %>
       <% end %>
@@ -35,4 +38,4 @@
   <% end %>
 </p>
 
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path, class: "lnk def" %>

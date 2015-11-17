@@ -5,18 +5,19 @@
 .login {
 	background-color: black;
 	color: white;
-	height: 100px;
+	height: 60px;
 	padding-left: 20px;
-
 	a {
 		color: #ccc;
 	}
 }
 
 #search_form {
+	line-height: 60px;
+	vertical-align: middle;
 	position: absolute;
 	right: 5%;
-	top: 40px;
+	top: 0px;
 }
 
 .searchform {
@@ -26,21 +27,39 @@
 #word_search_input {
 	color: black;
 	width: 350px;
-	height: 50px;
+	height: 30px;
 	border-radius: 8px;
 	border: 1px #000 solid;
-	font-size: 25px;
+	font-size: 15px;
+	line-height: 30px;
+	vertical-align: middle;
 }
 
 .form_button {
 	color: black;
+<<<<<<< HEAD
 	width: 60px;
 	height: 50px;
 	top: 38px;
+||||||| merged common ancestors
+	width: 60px;
+	height: 50px;
+=======
+	width: 45px;
+	height: 30px;
+>>>>>>> b3bb473354a5715a448f07d9f1a4df2e8e65275d
 	border-radius: 8px;
+<<<<<<< HEAD
 	border: 2px #000 solid;
 	font-size: 25px;
 	margin-top: -6px;
+||||||| merged common ancestors
+	border: 1px #000 solid;
+	font-size: 25px;
+=======
+	border: 1px #000 solid;
+	font-size: 15px;
+>>>>>>> b3bb473354a5715a448f07d9f1a4df2e8e65275d
 }
 
 
@@ -53,14 +72,12 @@
 	a {
 		color: white;
 		margin-left: 40px;
-		&:hover {
-			color: orange;
-		}
 	}
 }
 
 .header {
 	color: white;
+
 	.logo-banner {
 		width: 700px;
 	}
@@ -69,9 +86,38 @@
 // THIS IS THE STYLES FOR THE CAROUSEL IN THE HEADER
 .multi-item-carousel{
   .carousel-inner{
+  		height: 300px;
+  		overflow: hidden;
     > .item{
+      margin-top: -100px;
       transition: .6s ease-in-out all;
-
+      img {
+      	margin: 0 auto;
+      }
+    }
+    .event-featured {
+	    border-left: 2px solid #FFD460;
+	    border-right: 2px solid #FFD460;
+	    border-radius: 10px;
+	    h2 {
+	    	padding-top: 20px;
+	    	color: #FFD460;
+	    	font-weight: 600;
+	    }
+    }
+    .event-box {
+        border-left: 2px solid #EA5455;
+        border-right: 2px solid #EA5455;
+        border-radius: 6px;
+        margin-top: 50px;
+    }
+    .event-text {
+    	width: 100%;
+    	height: 100%;
+    	z-index: 99;
+    	position: inherit;
+    	top: 150px;
+    	background-color: rgba(0,0,0,0.5);
     }
     .active{
       &.left{

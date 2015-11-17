@@ -2,14 +2,24 @@
 <%= render 'navigation' %>
 
 <p id="notice"><%= notice %></p>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-        <h2>
-          <strong><%= @event.title %></strong>
-        </h2>
+    <div class="col-md-12">
+      <h2>
+        <strong><%= @event.title %></strong>
+      </h2>
 
-        <%= link_to image_tag(@event.image.url(:med)), @event.image.url %>
+      <!-- <div class="event_image" style="background-image: url('<%= @event.image.url %>') cover no-repeat"></div> -->
+
+      <div class="gradient"></div>
+      <img class="img-responsive event_image" src="<% image_tag (@event.image.url(:xlarge)) %>" ></img>
+
+    </div>
+  </div>
+
+  <div class="row middle">
+    <div class="col-md-4 text-center" style="z-index:10000">
 
         <p>
           <strong>Description:</strong>
@@ -57,9 +67,9 @@
           <p>none available</p>
         <% end %>
 
-        <hr>
+
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 text-center" style="z-index:10000">
       <h3>People Attending This Event</h3>
 
       <table class="attendance_list">
@@ -73,34 +83,37 @@
             <% @eventees.each do |eventee| %>
             <tr>
               <td><%= eventee.username%></td>
-              <td><%= link_to 'Show', @user %></td>
+              <td><%= link_to 'Show', @user, class: "lnk thi" %></td>
             </tr>
             <% end %>
           <% end %>
         </tbody>
       </table>
 
-      <hr>
+
       <% if user_signed_in? %>
         <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
-          <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %> 
+          <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %>
         <% else %>
-          <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %> 
+          <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %>
         <% end %>
       <% end %>
 
-      <% if @event.user_id == current_user.id %>
-        | <%= link_to 'Edit', edit_event_path(@event) %>
+      <% if user_signed_in? %>
+        <% if @event.user_id == current_user.id %>
+          | <%= link_to 'Edit', edit_event_path(@event), class: "lnk sec" %>
+        <% end %>
       <% end %>
 
 
-
     </div>
-    <div class="col-md-4">
-      <div id="map"></div>
+    <div class="col-md-4" style="z-index:10000">
+      <div id="map">
+      </div>
     </div>
   </div>
 </div>
+
 <script>
   function initMap() {
     var latitude = document.getElementById("latitude").getAttribute("value");

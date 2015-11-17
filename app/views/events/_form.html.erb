@@ -40,6 +40,9 @@
     <%= f.hidden_field :latitude %>
     <%= f.hidden_field :longitude %>
   </div>
+
+  <div id="map"></div>
+  
   <div class="field">
     <%= f.label :start_time %><br>
     <%= f.time_field :start_time%>
@@ -49,14 +52,9 @@
     <%= f.time_field :end_time%>
   </div>
 
-  <p>
-    <strong>Tags:</strong>
-    <% @event.tags.each do |tag| %>
-      <%= tag.name%>
-    <% end %>
-  </p>
+ 
 
-  <h2>Edit Tags</h2>
+  <h2>Add Tags</h2>
   <%= f.fields_for :tags do |tag| %>
     <div class="tag_fields">
       <div class="field">
@@ -67,7 +65,7 @@
     </div>
   <% end %>
 
-  <ul
+  
 
   <div class="actions">
     <%= f.submit %>
