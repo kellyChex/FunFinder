@@ -67,7 +67,7 @@
           <p>none available</p>
         <% end %>
 
-        <hr>
+
     </div>
     <div class="col-md-4 text-center" style="z-index:10000">
       <h3>People Attending This Event</h3>
@@ -90,7 +90,7 @@
         </tbody>
       </table>
 
-      <hr>
+
       <% if user_signed_in? %>
         <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
           <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %>

@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.geocomplete
+//= require events
 //= require bootstrap
 //= require new
-//= require events
 //= require_tree .

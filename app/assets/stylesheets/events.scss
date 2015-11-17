@@ -2,39 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #map {
-  display: block;
+  // display: block;
   height: 400px;
-  width: 100%;
+  width: 357px;
 }
-
-
 
 body{
-  // background-color: #2D4059;
-}
+  // background-color: rgba(240, 122, 62, 0.5);
 
-hr {
-  height: 2px;
-  background-color: #F07B3F
 }
 
 .col-md-4 {
   border-left: 2px solid #EA5455;
   border-right: 2px solid #EA5455;
-
   border-radius: 7px;
-  // margin-left: 3px;
-  // margin-right: 3px;
-
-
-}
-
-.space{
-  width: 90%;
-  height: 250px;
-  -webkit-transition: border .2s ease-in-out;
-        -o-transition: border .2s ease-in-out;
-           transition: border .2s ease-in-out;
+  // background-image: radial-gradient(rgba(240, 122, 62, 0.5), rgba(255, 212, 96, 0) );
 
 }
 
@@ -42,11 +24,16 @@ hr {
   margin-top: 330px;
   z-index: 10000;
 }
+
 .gradient {
   position: absolute;
   background-image:
+    -webkit-linear-gradient(
+      rgba(0, 0, 0, 0), rgba(45, 64, 89, 1)
+  );
+  background-image:
     linear-gradient(
-      rgba(0, 0, 0, 0), rgba(255, 255, 255, 1)
+      rgba(0, 0, 0, 0), rgba(45, 64, 89, 1)
     );
     // overflow:auto;
     width: 97.4%;
@@ -57,6 +44,7 @@ hr {
   z-index: 10;
 }
 .event_image{
+
   position:absolute;
   width: 97.4%;
   height: 400px;
