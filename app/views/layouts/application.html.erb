@@ -16,37 +16,41 @@
 <body>
 
 <div class="row">
-<div class="login">
-  <% if user_signed_in? %>
-    <%= image_tag ("funfinder-logo3.png"), class: "logo" %>
-    Logged in as <strong><%= current_user.username %></strong>
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "lnk def" %>
-    <div id= "search_form">
-      <form action ='/' method='get' class= 'searchform'>
-        <label for="word_search_input"></label>
-        <input id="word_search_input" type="text" placeholder =" Search  For  Event" name="search_string" />
-        <!-- <input type="submit" class="form_button" value="Search" /> -->
-        <button type="submit" class="btn btn-default form_button">
-          <span class="glyphicon glyphicon-search"></span>
-        </button>
-      </form>
-    </div>
-  <% else %>
-    <%= link_to "Sign Up", new_user_registration_path, class: "lnk pri" %>
-    <%= link_to "Login", new_user_session_path, class: "lnk def" %>
-    <div id= "search_form">
-      <form action ='/' method='get'>
-        <label for="word_search_input"></label>
-        <input id="word_search_input" type="text" placeholder =" Search  For  Event" name="search_string" />
-        <button type="submit" class="btn btn-default form_button">
-          <span class="glyphicon glyphicon-search"></span>
-        </button>
-      </form>
-    </div>
-  <% end %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-</div>
+  <div class="login">
+    <% if user_signed_in? %>
+      <%= image_tag ("funfinder-logo3.png"), class: "logo" %>
+      Logged in as <strong><%= current_user.username %></strong>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "lnk def" %>
+
+      <div id= "search_form">
+        <form action ='/' method='get' class= 'searchform'>
+          <label for="word_search_input"></label>
+          <input id="word_search_input" type="text" placeholder =" Search  For  An  Event" name="search_string" />
+          <!-- <input type="submit" class="form_button" value="Search" /> -->
+          <button type="submit" class="btn btn-default form_button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </form>
+      </div>
+
+    <% else %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "lnk pri" %>
+      <%= link_to "Login", new_user_session_path, class: "lnk def" %>
+
+      <div id="search_form">
+        <form action ='/' method='get'>
+          <label for="word_search_input"></label>
+          <input id="word_search_input" type="text" placeholder =" Search  For  An  Event" name="search_string" />
+          <button type="submit" class="btn btn-default form_button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </form>
+      </div>
+
+    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
 </div>
 
 

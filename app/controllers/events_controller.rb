@@ -6,14 +6,11 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @tags = Tag.all
-
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    @event.tags.build
-
     @event = Event.find(params[:id])
     @user = current_user
 
@@ -23,19 +20,23 @@ class EventsController < ApplicationController
       @attendees << attendance.user_id
     end
     @eventees = User.where(:id => @attendees)
-
   end
 
   # GET /events/new
   def new
     @event = Event.new
-    @Tag = Tag.new
     @event.tags.build
+    p "*********NEW METHOD**********"
+    p @event
+    p @event.tags
   end
 
   # GET /events/1/edit
   def edit
     @event.tags.build
+    p "**********EDIT METHOD*********"
+    p @event
+    p @event.tags
   end
 
   # POST /events
@@ -43,24 +44,29 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
+    p "**********CREATE METHOD*********"
+    p @event
+    p @event.tags
+
     @attendances = Attendance.where(:event_id => @event.id)
-    @event.save
-    if @event.update(event_params)
-      attend
-    else
-      respond_to do |format|
+
+    respond_to do |format|
+      if @event.save
+        format.html { attend }
+      else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
-
-
-
   end
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+
+    p "**********UPDATE METHOD*********"
+    p @event
+    p @event.tags
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
@@ -72,18 +78,6 @@ class EventsController < ApplicationController
     end
   end
 
-  #ADD Tag
-def add_tag
-  @event = Event.find(params[:id])
-  newTag = Tag.new(params[:tag])
-  if newTag.valid?
-    newTag.name.downcase! # ! alters the original
-    newTag.save
-    @event.tags << newTag
-    @event.save
-  end
-  render 'show.html.erb'
-end
 
   # DELETE /events/1
   # DELETE /events/1.json
@@ -108,7 +102,9 @@ end
     @user = current_user
 
     if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank?
-
+    p "**********ATTEND METHOD*********"
+    p @event
+    p @event.tags
       @attendance = Attendance.new
       @attendance.event_id = @event.id
       @attendance.user_id = current_user.id
