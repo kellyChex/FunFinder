@@ -7,19 +7,26 @@
 
 <!-- THIS IS THE EVENT CAROUSEL -->
 		<div class="container">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-10 col-md-offset-1">
 				<div class="carousel slide multi-item-carousel" id="theCarousel">
 				  <div class="carousel-inner">
 
 				  	<% @top_event.each do |event| %>
 					    <div class="item active">
-							<div class="col-xs-4"><%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), @event %></div>
+							<div class="col-xs-4 event-featured">
+					    		<h2 class="event-text">FEATURED</h2>
+					    		<h3 class="event-text"><%= event.title %></h3>
+								<%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), event %>
+							</div>
 						</div>
 					<% end %>
 
 				    <% @events.each do |event| %>
 				    	<div class="item">
-				    		<div class="col-xs-4"><%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), event %></div>
+				    		<div class="col-xs-4 event-box">
+					    		<h3 class="event-text"><%= event.title %></h3>
+				    			<%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), event %>
+				    		</div>
 				    	</div>
 				    <% end %>
 
