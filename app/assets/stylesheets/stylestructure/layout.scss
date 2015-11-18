@@ -1,0 +1,97 @@
+// LANDING PAGE //
+//*************//
+.header {
+	color: #fff;
+  .slogan {
+    font-size: 50px;
+    color: #fff;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 2px 2px #000;
+  }
+}
+
+.event-list {
+  height: 515px;
+  overflow: scroll;
+  .event-row:nth-child(even) {
+    background-color: rgba(192,192,192,0.5);
+  }
+}
+
+.about-box {
+  height: 515px;
+  overflow: scroll;
+  padding-top: 10%;
+  text-align: center;
+}
+
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+//EVENTS PAGE//
+//**********//
+#map {
+  // display: block;
+  height: 400px;
+  width: 357px;
+}
+
+.col-md-4 {
+  border-left: 2px solid #EA5455;
+  border-right: 2px solid #EA5455;
+  border-radius: 7px;
+}
+
+.middle{
+  margin-top: 330px;
+  z-index: 10000;
+}
+
+.gradient {
+  position: absolute;
+  background-image:
+    -webkit-linear-gradient(
+      rgba(0, 0, 0, 0), rgba(45, 64, 89, 1)
+  );
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0), rgba(45, 64, 89, 1)
+    );
+    // overflow:auto;
+    width: 97.4%;
+    height: 400px;
+  -webkit-transition: border .2s ease-in-out;
+        -o-transition: border .2s ease-in-out;
+           transition: border .2s ease-in-out;
+  z-index: 10;
+}
+.event_image{
+
+  position:absolute;
+  width: 97.4%;
+  height: 400px;
+  // overflow: hidden;
+  -webkit-transition: border .2s ease-in-out;
+        -o-transition: border .2s ease-in-out;
+           transition: border .2s ease-in-out;
+
+z-index: -10;
+
+}
+
+// PROFILE PAGE //
+//*************//
+
+.view-profile {
+  margin-top: 50px;
+  width: 100%;
+}

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container view-profile">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 well">
 <!-- User's Account Data -->
             <span>
               <%= image_tag(@user.image.url(:med), alt:"Upload Image") %>
@@ -14,13 +14,9 @@
 <!-- Your Attending Events -->
         <div class="col-md-3">
             <% if current_user.id == @user.id %>
-                <p>My Attending Events</p>
+                <h3>I'm Attending</h3>
+                <hr>
                 <table >
-                    <thead>
-                        <tr>
-                            <th>Event Title</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <% @my_events.each do |event| %>
                             <tr>
@@ -35,13 +31,9 @@
 <!-- Your Following's Posted Events -->
         <div class="col-md-3">
             <% if current_user.id == @user.id %>
-                <p>My Followings Attending Events</p>
+                <h3>Following Events</h3>
+                <hr>
                 <table >
-                    <thead>
-                        <tr>
-                            <th>Event Title</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <% @my_followed_events.each do |event| %>
                             <tr>
@@ -56,13 +48,9 @@
 <!-- Your Following List -->
         <div class="col-md-3">
             <% if current_user.id == @user.id %>
-                <p>I'm Following</p>
+                <h3>People I'm Following</h3>
+                <hr>
                 <table >
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <% @my_followeds.each do |user| %>
                             <tr>
@@ -92,7 +80,7 @@
             <% end %>
 
             <% if @user.id == current_user.id %>
-                | <%= link_to 'Edit', edit_user_registration_path(@user), class: "lnk sec" %>
+                <%= link_to 'Edit', edit_user_registration_path(@user), class: "lnk sec" %>
             <% end %>
         </div>
     </div>
