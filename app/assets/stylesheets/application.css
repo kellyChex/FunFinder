@@ -18,6 +18,5 @@
  *= require users
  *= require events
  *= require isotope
- =* require search
  *= require_self
  */
