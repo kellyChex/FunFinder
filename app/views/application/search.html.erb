@@ -1,37 +1,27 @@
-<p>
-  <% if !@searchedEvents.nil? %>
-    <% if !@searchedEvents.empty? %>
-      <h3>Event(s) found:</h3>
-      <% @storage = [] %>
-      <% @searchedEvents.each do |event| %>
-        <% @storage << event.title %>
-        <%= event.title %>
-        <%= link_to 'Show', event, class: "lnk thi" %><br>
-      <% end %>
-      <% if !@searchedTags.nil? %>
-        <% if !@searchedTags.empty? %>
-          <% @searchedTags.each do |tag| %>
-            <% if !@storage.include?(tag.event.title) %>
-            <%= tag.event.title %>
-            <%= link_to 'Show', tag.event, class: "lnk thi" %><br>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% elsif %>
-      <% if !@searchedTags.nil? %>
-        <% if !@searchedTags.empty? %>
-          <h3>Events found:</h3>
-          <% @searchedTags.each do |tag| %>
-          <%= tag.event.title %>
-          <%= link_to 'Show', tag.event, class: "lnk thi" %><br>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% else %>
-    <h3>No Events Found</h3>
-    <% end %>
-  <% end %>
-</p>
+<% if !@searchedEvents.nil? || !@searchedTags.nil? %>
 
-<%= link_to 'Back', root_path, class: "lnk def" %>
+    <% if !@searchedEvents.empty? || !@searchedTags.nil? %>
+        <h3>Events(s) found:</h3>
+
+        <div id="lightbox" class="row">
+            <% @storage.each do |event| %>
+              <div class="col-sm-6 col-md-3 col-lg-2">
+                <div class="portfolio-item">
+                  <a href="events/<%= event.id %>" >
+                    <div class="hover-bg">
+                        <div class="hover-text">
+                            <h4><%= event.title %></h4>
+                            <div class="clearfix"></div>
+                        </div>
+                  </a>
+                    <%= link_to image_tag(event.image.url(:large), :class => "img-responsive"), event %>
+                    </div>
+                </div>
+              </div>
+            <% end %>
+        </div>
+
+    <% else %>
+        <h3>No Events Found</h3>
+    <% end %>
+<% end %>
