@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   get 'searches/Search'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  # devise_for :users, :controllers => { registrations: 'registrations'}
+  devise_for :users, :controllers => { registrations: 'registrations'}
   resources :users, :only => [:show]
   resources :events
   resources :tags
@@ -15,6 +14,5 @@ Rails.application.routes.draw do
   match('/users/:id/unfollow', {:via => :delete, :to => 'users#unfollow'})
   match('/events/:id/attend', {:via => :post, :to => 'events#attend'})
   match('/events/:id/unattend', {:via => :delete, :to => 'events#unattend'})
-
 
 end
