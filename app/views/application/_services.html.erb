@@ -17,9 +17,10 @@
 
                         <thead>
                           <tr>
-                            <th>Title</th>
-                            <th>Location</th>
-                            <th>Description</th>
+                            <th><%= sortable "title" %></th>
+                            <th><%= sortable "location" %></th>
+                            <th><%= sortable "start_date" %></th>
+                            <th><%= sortable "end_date" %></th>
                           </tr>
                         </thead>
 
@@ -28,7 +29,8 @@
                                 <tr>
                                     <td><%= event.title %></td>
                                     <td><%= event.location %></td>
-                                    <td><%= event.description %></td>
+                                    <td><%= event.start_date %></td>
+                                    <td><%= event.end_date %></td>
 
                                     <% if user_signed_in? %>
                                         <td><%= link_to 'Show', event, class: "lnk thi" %></td>
