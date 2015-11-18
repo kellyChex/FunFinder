@@ -238,8 +238,8 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   require 'omniauth-google-oauth2'
-    config.omniauth :google_oauth2, '215536427833-p0u8ar9us8evp8jpacg7vna7tgan4ctm.apps.googleusercontent.com',
-    'vqnAvhwwDj38MmXNOUkHKmh1',
+    config.omniauth :google_oauth2, '215536427833-mb37kd4ljoq5oup9kis3jhdt95c2t687.apps.googleusercontent.com',
+    'ezWN4nwhi93djFs-7zocmmmc',
     { access_type: "offline", approval_prompt: "",
     scope: 'userinfo.email,calendar' }
 

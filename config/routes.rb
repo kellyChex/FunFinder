@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'searches/Search'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  # devise_for :users, :controllers => { registrations: 'registrations'}
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", registrations: 'registrations' }
+
   resources :users, :only => [:show]
   resources :events
   resources :tags
