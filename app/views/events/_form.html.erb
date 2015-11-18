@@ -41,8 +41,8 @@
     <%= f.hidden_field :longitude %>
   </div>
 
-  <div id="map"></div>
-  
+  <div id="create-map"></div>
+
   <div class="field">
     <%= f.label :start_time %><br>
     <%= f.time_field :start_time%>
@@ -52,7 +52,7 @@
     <%= f.time_field :end_time%>
   </div>
 
- 
+
 
   <h2>Add Tags</h2>
   <%= f.fields_for :tags do |tag| %>
@@ -65,7 +65,7 @@
     </div>
   <% end %>
 
-  
+
 
   <div class="actions">
     <%= f.submit %>

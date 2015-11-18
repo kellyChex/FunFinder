@@ -12,11 +12,8 @@ class EventsController < ApplicationController
     @tags.each do |tag|
       if !@tag_names.include?(tag.name)
         @tag_names << tag.name
-      end 
+      end
     end
-
-
-    
   end
 
   # GET /events/1
@@ -77,16 +74,21 @@ class EventsController < ApplicationController
     end
   end
 
+  # def find
+  #   Event.within(10, :origin => )
+  #
+  #
+  # end
 
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-# DELETE ALL ATTENDANCES THAT THIS EVENT 
+# DELETE ALL ATTENDANCES THAT THIS EVENT
     @attendances = Attendance.where(:event_id => @event)
     @attendances.each do |attendance|
       attendance.destroy
     end
-    
+
     @event.destroy
 
     respond_to do |format|

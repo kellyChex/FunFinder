@@ -1,28 +1,26 @@
 $( document ).ready(function() {
-  var latitude = $("#event_latitude").val();
-  var longitude = $("#event_longitude").val();
-  var loc = new google.maps.LatLng(latitude,longitude);
+  var createLatitude = $("#event_latitude").val();
+  var createLongitude = $("#event_longitude").val();
+  var createLocation = new google.maps.LatLng(createLatitude,createLongitude);
   $("#event_location").geocomplete({
-    map: "#map",
-    mapOptions: {
-      zoom: 10
-    },
-
-    location: loc,
-
+    map: "#create-map",
+    mapOptions: { zoom: 10 },
+    location: createLocation,
     markerOptions: {
       draggable: true
     }
   });
 
+  var frontLocation = new google.maps.LatLng(32.715738,-117.1610838);
+  $("#area-search").geocomplete({
 
-  // var gmaps = new google.maps.places.Autocomplete($("#event_location").get(0),
-  // { types: ['geocode'], componentRestrictions: {country: 'us'} });
-  //
-  // google.maps.event.addListener(gmaps, 'place_changed', function(){
-  //
-  //   var place = autocomplete.getPlace();
-  //   $("#event_latitude").value = place.geometry.location.lat();
-  //   $("#event_longitude").value = place.geometry.location.lng();
-  // });
+    map: "#front-map",
+    mapOptions: { zoom: 10 },
+
+    location: frontLocation,
+
+    markerOptions: {
+      draggable: true
+    }
+  });
 });
