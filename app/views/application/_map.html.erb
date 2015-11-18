@@ -1,9 +1,49 @@
     <!-- Map -->
     <section id="contact" class="map">
+
       <div id="area-search-div">
+        <!-- <form action="/area"> -->
         <input type="text" id="area-search-bar" placeholder="Enter Your Location"></input>
+        <input class="area-search-button" type="submit" onClick="initMap()"/>
+        <!-- </form> -->
       </div>
+
+      <form>
+         <input id="lat" class="areaForm" name="lat" type="hidden" value="">
+         <input id="lng" class="areaForm" name="lng" type="hidden" value="">
+         <!-- <input class="areaForm" name="formatted_address" type="hidden" value=""> -->
+      </form>
 
       <div id="front-map"></div>
 
     </section>
+
+    <script>
+    function initMap() {
+           var latitude = document.getElementById("lat").getAttribute("value");
+           var longitude = document.getElementById("lng").getAttribute("value");
+           var location = new google.maps.LatLng(latitude,longitude);
+           var mapOptions = { zoom:12, center: location }
+           var map = new google.maps.Map(document.getElementById("front-map"), mapOptions);
+           var icon = document.getElementById("")
+           var circle = new google.maps.Circle({
+                       center: location,
+                       radius: 7 * 1609.344,
+                       fillColor: "#ff69b4 ",
+                       fillOpacity: 0.5,
+                       strokeOpacity: 0.0,
+                       strokeWeight: 0,
+                       map: map
+         })
+         var marker = new google.maps.Marker({
+           position: location,
+           animation: google.maps.Animation.BOUNCE,
+           icon: "<%= asset_path 'icons/funfinder-logo8.png' %>",
+           map: map
+         });
+
+
+       }
+    // google.maps.event.addDomListener(window, "load", initMap);
+
+    </script>

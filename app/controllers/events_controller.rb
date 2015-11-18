@@ -74,11 +74,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # def find
-  #   Event.within(10, :origin => )
-  #
-  #
-  # end
 
   # DELETE /events/1
   # DELETE /events/1.json

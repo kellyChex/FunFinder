@@ -4,23 +4,36 @@ $( document ).ready(function() {
   var createLocation = new google.maps.LatLng(createLatitude,createLongitude);
   $("#event_location").geocomplete({
     map: "#create-map",
-    mapOptions: { zoom: 10 },
+    mapOptions: { zoom: 12 },
     location: createLocation,
     markerOptions: {
-      draggable: true
+      // icon: "<%= asset_path 'icons/funfinder-logo8.png' %>",
+  
     }
   });
 
-  var frontLocation = new google.maps.LatLng(32.715738,-117.1610838);
-  $("#area-search-bar").geocomplete({
+  $("#area-search-bar").geocomplete({details: "form" })
 
-    map: "#front-map",
-    mapOptions: { zoom: 10 },
 
-    location: frontLocation,
+  // var frontLocation = new google.maps.LatLng(32.715738,-117.1610838);
+  //
+  // var map = $("#area-search-bar").geocomplete({
+  //
+  //   map: "#front-map",
+  //   mapOptions: { zoom: 12 },
+  //   location: frontLocation,
+  //   circleOptions: {
+  //     center: frontLocation,
+  //     radius: 2 * 1609.344,
+  //     fillColor: "#ff69b4",
+  //     fillOpacity: 0.5,
+  //     strokeOpacity: 0.0,
+  //     strokeWeight: 0
+  //   },
+  //   markerOptions: {
+  //     draggable: true
+  //   }
+  // });
 
-    markerOptions: {
-      draggable: true
-    }
-  });
+
 });
