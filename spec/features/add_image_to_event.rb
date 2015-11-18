@@ -9,7 +9,7 @@ describe 'upload image at event creation', :type => :feature do
     fill_in 'Email', :with => 'user1@example.com'
     fill_in 'Password', :with => 'password'
     fill_in 'Password confirmation', :with => 'password'
-    attach_file('user_image', '../images/headshot.png')
+    attach_file('user_image', 'spec/images/headshot.png')
     click_button 'Sign up'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
 
@@ -17,7 +17,7 @@ describe 'upload image at event creation', :type => :feature do
    visit '/events'
    click_link('New Event')
    fill_in 'Title', :with => 'New Event'
-   attach_file 'event_image', '../images/headshot.png'
+   attach_file 'event_image', 'spec/images/headshot.png'
    fill_in 'Description', :with => 'myDescription'
    select( '2015', :from => 'event_start_date_1i')
    select( 'November', :from => 'event_start_date_2i')

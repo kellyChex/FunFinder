@@ -9,7 +9,7 @@ describe 'attend feature for an event', :type => :feature do
     fill_in 'Email', :with => 'user1@example.com'
     fill_in 'Password', :with => 'password'
     fill_in 'Password confirmation', :with => 'password'
-    attach_file('user_image', '../images/headshot.png')
+    attach_file('user_image', 'spec/images/headshot.png')
     click_button 'Sign up'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
 
@@ -17,7 +17,7 @@ describe 'attend feature for an event', :type => :feature do
    visit '/events'
    click_link('New Event')
    fill_in 'Title', :with => 'New Event'
-   attach_file 'event_image', '../images/headshot.png'
+   attach_file 'event_image', 'spec/images/headshot.png'
    fill_in 'Description', :with => 'myDescription'
    select( '2015', :from => 'event_start_date_1i')
    select( 'November', :from => 'event_start_date_2i')
@@ -27,19 +27,16 @@ describe 'attend feature for an event', :type => :feature do
    select( '12', :from => 'event_end_date_3i')
    fill_in 'Location', :with => '9999 Rio San Diego Drive, San Diego, CA, United States'
    fill_in 'event_start_time', :with => '00:45:00.000'
-   fill_in 'event_start_time', :with => '00:45:00.000'
    fill_in 'event_end_time', :with => '13:09:00.000'
    click_button('Create Event')
    expect(page).to have_content 'myDescription'
+   click_link 'Unattend'
+   expect(page).to have_content 'Attend'
 
-    # User Attends Event
-    visit '/events/1'
-    click_link 'Unattend'
-    expect(page).to have_content 'Attend'
-
-    visit '/events/1'
+    # User unattends Event
     click_link 'Attend'
     expect(page).to have_content 'Unattend'
+
   end
 
 end

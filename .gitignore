@@ -11,3 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+
+#added to not store paperclip images
+/public/system/
