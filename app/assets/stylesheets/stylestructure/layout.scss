@@ -10,31 +10,39 @@
     text-shadow: 2px 2px #000;
   }
 }
-
-.event-list {
-  height: 515px;
-  overflow: scroll;
-  .event-row:nth-child(even) {
-    background-color: rgba(192,192,192,0.5);
+.about {
+  strong {
+    color: $brand-color;
+    font-size: 40px;
   }
-}
+  .event-list {
+    height: 515px;
+    overflow: scroll;
+    .event-row:nth-child(even) {
+      background-color: rgba(192,192,192,0.5);
+    }
+    td {
+      padding: 10px;
+    }
+  }
 
-.about-box {
-  height: 515px;
-  overflow: scroll;
-  padding-top: 10%;
-  text-align: center;
-}
+  .about-box {
+    height: 515px;
+    overflow: scroll;
+    padding-top: 10%;
+    text-align: center;
+  }
 
 
-::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
-}
-::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  ::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgba(0,0,0,.5);
+      -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  }
 }
 
 //EVENTS PAGE//
