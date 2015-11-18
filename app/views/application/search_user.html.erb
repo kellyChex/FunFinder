@@ -1,0 +1,19 @@
+<p>
+  <% if !@searchedUsers.nil? %>
+
+    <% if !@searchedUsers.empty? %>
+    	<h3>Users(s) found:</h3>
+
+    	<% @searchedUsers.each do |user| %>
+        	<%= user.username %>
+        	<%= link_to 'Show', user, class: "lnk thi" %><br>
+    	<% end %>
+
+    <% else %>
+    	<h3>No Users Found</h3>
+    <% end %>
+
+  <% end %>
+</p>
+
+<%= link_to 'Back', root_path, class: "lnk def" %>

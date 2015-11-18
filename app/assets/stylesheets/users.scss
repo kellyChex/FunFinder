@@ -12,16 +12,13 @@
 	}
 }
 
+// EVENT SEARCH FORM
 #search_form {
 	line-height: 60px;
 	vertical-align: middle;
 	position: absolute;
 	right: 5%;
 	top: 0px;
-}
-
-.searchform {
-	display: inline;
 }
 
 #word_search_input {
@@ -43,6 +40,40 @@
 	border: 1px #000 solid;
 	font-size: 15px;
 }
+
+// USERS SEARCH FORM
+
+
+.search_users {
+  position: inherit;
+  bottom: 2%;
+  right: 1.5%;
+}
+
+#word_search_input_users {
+  color: black;
+  width: 70%;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px #000 solid;
+  font-size: 15px;
+  line-height: 30px;
+  vertical-align: middle;
+}
+
+.form_button_users {
+  color: black;
+  width: 45px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px #000 solid;
+  font-size: 15px;
+}
+
+
+
+
+
 
 
 .event_list {
@@ -72,6 +103,8 @@
 }
 
 // THIS IS THE STYLES FOR THE CAROUSEL IN THE HEADER
+.object-fit_fill { object-fit: fill }
+
 .multi-item-carousel{
   .carousel-inner{
     > .item{
@@ -79,6 +112,9 @@
       height: 500px;
       img {
       	margin: 0 auto;
+        object-fit: fill;
+        height: 300px;
+        width: 300px;
       }
       a {
         color: white;
@@ -101,6 +137,11 @@
         border: 4px solid;
         margin: 0 auto; 
         padding: 0;
+      }
+      img {
+        object-fit: fill;
+        height: 250px;
+        width: 300px;
       }
     }
     .event-box {

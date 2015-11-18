@@ -10,13 +10,20 @@ class ApplicationController < ActionController::Base
     @tags = Tag.all
     @attendances = Attendance.all
 
-# This is for the search bar
+# This is for the event search bar
     if !params[:search_string].nil?
         search_string = params[:search_string].strip.downcase
         search_string = search_string.gsub("'", "\''")
         @searchedEvents = Event.where("LOWER(title) LIKE '%#{search_string}%'")
         @searchedTags = Tag.where("LOWER(name) LIKE '%#{search_string}%'")
         render "search.html.erb"
+    end
+
+# This is for the event search bar
+    if !params[:search_user].nil?
+        search_user = params[:search_user].strip.downcase
+        @searchedUsers = User.where("LOWER(username) LIKE '%#{search_user}%'")
+        render "search_user.html.erb"
     end
 
 # This is to sort the lists
