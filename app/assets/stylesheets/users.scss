@@ -72,6 +72,8 @@
 }
 
 // THIS IS THE STYLES FOR THE CAROUSEL IN THE HEADER
+.object-fit_fill { object-fit: fill }
+
 .multi-item-carousel{
   .carousel-inner{
     > .item{
@@ -79,6 +81,9 @@
       height: 500px;
       img {
       	margin: 0 auto;
+        object-fit: fill;
+        height: 300px;
+        width: 300px;
       }
       a {
         color: white;
@@ -101,6 +106,11 @@
         border: 4px solid;
         margin: 0 auto; 
         padding: 0;
+      }
+      img {
+        object-fit: fill;
+        height: 250px;
+        width: 300px;
       }
     }
     .event-box {
