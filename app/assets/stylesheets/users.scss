@@ -59,10 +59,16 @@
 
 .header {
 	color: white;
-
 	.logo-banner {
 		width: 800px;
 	}
+  .slogan {
+    font-size: 50px;
+    color: #fff;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 2px 2px #000;
+  }
 }
 
 // THIS IS THE STYLES FOR THE CAROUSEL IN THE HEADER
