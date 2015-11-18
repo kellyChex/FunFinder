@@ -12,7 +12,7 @@ $( document ).ready(function() {
   });
 
   var frontLocation = new google.maps.LatLng(32.715738,-117.1610838);
-  $("#area-search").geocomplete({
+  $("#area-search-bar").geocomplete({
 
     map: "#front-map",
     mapOptions: { zoom: 10 },
