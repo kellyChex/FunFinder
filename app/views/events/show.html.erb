@@ -107,7 +107,7 @@
 
     </div>
     <div class="col-md-4" style="z-index:10000">
-      <div id="map">
+      <div id="show-map">
       </div>
     </div>
   </div>
@@ -119,12 +119,12 @@
     var longitude = document.getElementById("longitude").getAttribute("value");
     var location = new google.maps.LatLng(latitude,longitude);
     var mapOptions = { zoom:13, center: location }
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    var map = new google.maps.Map(document.getElementById("show-map"), mapOptions);
     var icon = document.getElementById("")
     var marker = new google.maps.Marker({
       position: location,
       animation: google.maps.Animation.BOUNCE,
-      icon: "<%= asset_path 'icons/funfinder-logo7.png' %>",
+      icon: "<%= asset_path 'icons/funfinder-logo8.png' %>",
       map: map
     });
   }
