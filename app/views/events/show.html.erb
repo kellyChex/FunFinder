@@ -7,7 +7,7 @@
       <h2><strong><%= @event.title %></strong></h2>
         <%=link_to 'Add Event to Google Calendar', '/events/' + @event.id.to_s + '/saveEvent', :method => :post, class: "lnk pri" %>
 
-      <%= image_tag(@event.image.url(:xlarge), :class => "img-responsive") %>
+      <img class="img-responsive event_image" src="<%= @event.image.url %>" ></img>
 
     </div>
   </div>
