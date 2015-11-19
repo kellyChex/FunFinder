@@ -48,6 +48,11 @@
 
 //EVENTS PAGE//
 //**********//
+
+.event-show {
+  margin-top: 100px;
+}
+
 #show-map {
   height: 357px;
   width: 357px;
@@ -63,6 +68,7 @@
 	.event-buttons{
 		float: right;
 	}
+
 
 	h1, h2{
 	display: inline-block;

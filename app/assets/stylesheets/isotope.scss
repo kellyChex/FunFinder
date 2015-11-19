@@ -63,6 +63,7 @@ ul, ol{
 ==============================*/
 #tf-works{
     padding: 20px 0;
+    margin-top: 50px;
 }
 .categories{ 
     padding: 10px 0;
@@ -84,7 +85,7 @@ ol.type li:after{
 ol.type li:last-child:after { content: ''; }
 ol.type li a{ color: #222222}
 ol.type li a.active { font-weight: 700; }
-.isotope-item { z-index: 2 }
+.isotope-item { z-index: 0 }
 .isotope-hidden.isotope-item { z-index: 1 }
 .isotope,
 .isotope .isotope-item {
