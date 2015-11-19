@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
       end
 
       @attending_events = Event.where(:id => @attendance_ids)
-      
+
       @future_events = []
       @attending_events.each do |event|
         if event.end_date.future?

@@ -17,6 +17,10 @@ class Event < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode, :if => :location_changed?
 
+  acts_as_mappable  :default_formula => :flat,
+                    :lat_column_name => :latitude,
+                    :lng_column_name => :longitude
+
 
   accepts_nested_attributes_for :tags,
                                 reject_if: proc { |attributes| attributes['name'].blank? },

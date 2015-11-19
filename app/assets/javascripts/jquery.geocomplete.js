@@ -98,6 +98,7 @@
     init: function(){
       this.initMap();
       this.initMarker();
+      this.initCircle();
       this.initGeocoder();
       this.initDetails();
       this.initLocation();
@@ -163,6 +164,15 @@
         'dragend',
         $.proxy(this.markerDragged, this)
       );
+    },
+
+    initCircle: function(){
+      if (!this.map){ return; }
+      var options = $.extend(this.options.circleOptions, { map: this.map });
+
+      if (options.disabled){ return; }
+
+      this.circle = new google.maps.Circle(options);
     },
 
     // Associate the input with the autocompleter and create a geocoder

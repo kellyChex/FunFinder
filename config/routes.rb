@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   match('/events/:id/saveEvent', {:via => :post, :to => 'events#saveEvent'})
   match('/events/:id/attend', {:via => :post, :to => 'events#attend'})
   match('/events/:id/unattend', {:via => :delete, :to => 'events#unattend'})
+  # match('/events', {:via => :get, :to => 'events#find'})
 
 
 end

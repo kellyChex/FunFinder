@@ -1,28 +1,39 @@
 $( document ).ready(function() {
-  var latitude = $("#event_latitude").val();
-  var longitude = $("#event_longitude").val();
-  var loc = new google.maps.LatLng(latitude,longitude);
+  var createLatitude = $("#event_latitude").val();
+  var createLongitude = $("#event_longitude").val();
+  var createLocation = new google.maps.LatLng(createLatitude,createLongitude);
   $("#event_location").geocomplete({
-    map: "#map",
-    mapOptions: {
-      zoom: 10
-    },
-
-    location: loc,
-
+    map: "#create-map",
+    mapOptions: { zoom: 12 },
+    location: createLocation,
     markerOptions: {
-      draggable: true
+      // icon: "<%= asset_path 'icons/funfinder-logo8.png' %>",
+  
     }
   });
 
+  $("#area-search-bar").geocomplete({details: "form" })
 
-  // var gmaps = new google.maps.places.Autocomplete($("#event_location").get(0),
-  // { types: ['geocode'], componentRestrictions: {country: 'us'} });
+
+  // var frontLocation = new google.maps.LatLng(32.715738,-117.1610838);
   //
-  // google.maps.event.addListener(gmaps, 'place_changed', function(){
+  // var map = $("#area-search-bar").geocomplete({
   //
-  //   var place = autocomplete.getPlace();
-  //   $("#event_latitude").value = place.geometry.location.lat();
-  //   $("#event_longitude").value = place.geometry.location.lng();
+  //   map: "#front-map",
+  //   mapOptions: { zoom: 12 },
+  //   location: frontLocation,
+  //   circleOptions: {
+  //     center: frontLocation,
+  //     radius: 2 * 1609.344,
+  //     fillColor: "#ff69b4",
+  //     fillOpacity: 0.5,
+  //     strokeOpacity: 0.0,
+  //     strokeWeight: 0
+  //   },
+  //   markerOptions: {
+  //     draggable: true
+  //   }
   // });
+
+
 });
