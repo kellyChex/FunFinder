@@ -47,21 +47,37 @@
 
 //EVENTS PAGE//
 //**********//
-#map {
+#show-map {
   // display: block;
   height: 400px;
   width: 357px;
 }
 
-.col-md-4 {
-  border-left: 2px solid #EA5455;
-  border-right: 2px solid #EA5455;
-  border-radius: 7px;
+.gradient {
+  position: absolute;
+  background-image:
+    -webkit-linear-gradient(
+      rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 1)
+  );
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 1)
+    );
+    width: 97.4%;
+    height: 400px;
+  z-index: 1;
+}
+.event_image img{
+
+  position:absolute;
+  width: 97.4%;
+  height: 400px;
+	z-index: -1;
 }
 
 .middle{
-  margin-top: 330px;
-  z-index: 10000;
+  margin-top: 350px;
+  z-index: 2;
 }
 
 
