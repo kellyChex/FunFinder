@@ -4,36 +4,62 @@
   <div class="row">
 
     <div class="col-md-12">
-      <h2><strong><%= @event.title %></strong></h2>
-        <%=link_to 'Add Event to Google Calendar', '/events/' + @event.id.to_s + '/saveEvent', :method => :post, class: "lnk pri" %>
+      <div id="event-title-bar">
+        <h2><strong><%= @event.title.titleize %></strong></h2>
+        <div class="event-buttons">
+          <% if user_signed_in? %>
+            <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
+              <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post, class: "lnk pri" %>
+            <% else %>
+              <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete, class: "lnk pri" %>
+            <% end %>
+          <% end %>
 
-      <%= image_tag(@event.image.url(:xlarge), :class => "img-responsive") %>
+
+
+          <%=link_to 'Add Event to Google Calendar', '/events/' + @event.id.to_s + '/saveEvent', :method => :post, class: "lnk pri" %>
+
+          <% if user_signed_in? %>
+            <% if @event.user_id == current_user.id %>
+               <%= link_to 'Edit', edit_event_path(@event), class: "lnk sec" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="gradient"></div>
+      <div class="event_image">
+        <img src="<%= @event.image.url %>" ></img>
+      </div>
 
     </div>
   </div>
 
   <div class="row middle">
-    <div class="col-md-4 text-center" style="z-index:10000">
+    <div class="col-md-4 text-center">
 
-        <p>
-          <strong>Description:</strong>
-          <%= @event.description %>
-        </p>
+      <table style="width:90%">
+        <tr>
+          <td colspan="2"><strong>Date</strong></td>
+        </tr>
+        <tr>
+          <td><%= @event.start_date %></td>
+          <td><%= @event.end_date %></td>
+        </tr>
+      </table>
 
-        <p>
-          <strong>Start Date:</strong>
-          <%= @event.start_date %>
-        </p>
+      <hr>
 
-        <p>
-          <strong>End Date:</strong>
-          <%= @event.end_date %>
-        </p>
+      <table style="width:90%">
+        <tr>
+          <th class="text-center"><strong>Location</strong></th>
+        </tr>
+        <tr>
+          <td><%= @event.location %></td>
+        </tr>
+      </table>
 
-        <p>
-          <strong>Location:</strong>
-          <%= @event.location %>
-        </p>
+      <hr>
 
         <p id="latitude" type="hidden" value="<%= @event.latitude %>">
         </p>
@@ -41,30 +67,40 @@
         <p id="longitude" type ="hidden" value="<%= @event.longitude %>">
         </p>
 
-        <p>
-          <strong>Start Time:</strong>
-          <%= @event.start_time.strftime("%I:%M %p") %>
-        </p>
-        <p>
-          <strong>End Time:</strong>
-          <%= @event.end_time.strftime("%I:%M %p") %>
-        </p>
+        <table style="width:90%">
+          <tr>
+            <th class="text-center"><strong>Start Time:</strong></th>
+            <th class="text-center"><strong>End Time:</strong></th>
+          </tr>
+          <tr>
+            <td><%= @event.start_time.strftime("%I:%M %p") %></td>
+            <td><%= @event.end_time.strftime("%I:%M %p") %></td>
+          </tr>
+        </table>
 
-        <strong>Tags:</strong>
-        <% if @event.tags.any? %>
-          <p>
-            <% @event.tags.each do |tag| %>
-              <%= tag.name %>
-            <% end %>
-          </p>
-        <% else %>
-          <p>none available</p>
-        <% end %>
+        <hr>
+
+        <table style="width:90%">
+          <tr>
+            <th class="text-center"><strong>Description:</strong></th>
+          </tr>
+          <tr>
+            <td><%= @event.description %></td>
+          </tr>
+        </table>
+
+        <hr>
 
 
     </div>
-    <div class="col-md-4 text-center" style="z-index:10000">
-      <h3>People Attending This Event</h3>
+
+    <div class="col-md-4">
+      <div id="show-map">
+      </div>
+    </div>
+
+    <div class="col-md-4 text-center">
+      <h4>People Attending This Event</h4>
 
       <table class="attendance_list">
         <thead>
@@ -76,7 +112,7 @@
           <% if !@eventees.nil? %>
             <% @eventees.each do |eventee| %>
             <tr>
-              <td><%= eventee.username%></td>
+              <td><%= eventee.username.titleize %></td>
               <td><%= link_to 'Show', eventee, class: "lnk thi" %></td>
             </tr>
             <% end %>
@@ -84,26 +120,18 @@
         </tbody>
       </table>
 
+      <hr>
 
-      <% if user_signed_in? %>
-        <%  if Attendance.where(:user_id => current_user.id, :event_id => @event.id).blank? %>
-          <%= link_to 'Attend', '/events/' + @event.id.to_s + '/attend', :method => :post %>
-        <% else %>
-          <%= link_to 'Unattend', '/events/' + @event.id.to_s + '/unattend', :method => :delete %>
-        <% end %>
+      <strong>Tags:</strong>
+      <% if @event.tags.any? %>
+        <p>
+          <% @event.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+        </p>
+      <% else %>
+        <p>none available</p>
       <% end %>
-
-      <% if user_signed_in? %>
-        <% if @event.user_id == current_user.id %>
-          | <%= link_to 'Edit', edit_event_path(@event), class: "lnk sec" %>
-        <% end %>
-      <% end %>
-
-
-    </div>
-    <div class="col-md-4" style="z-index:10000">
-      <div id="show-map">
-      </div>
     </div>
   </div>
 </div>

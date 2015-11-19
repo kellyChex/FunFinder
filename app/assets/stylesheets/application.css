@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require main
- *= require stylestructure
  *= require bootstrap
+ *= require stylestructure
  *= require stylish-portfolio
  *= require font-awesome
  *= require users

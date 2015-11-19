@@ -48,21 +48,58 @@
 
 //EVENTS PAGE//
 //**********//
-#map {
-  // display: block;
-  height: 400px;
+#show-map {
+  height: 357px;
+  width: 357px;
+	border-radius: 10px;
+}
+
+#create-map{
+	height: 357px;
   width: 357px;
 }
 
-.col-md-4 {
-  border-left: 2px solid #EA5455;
-  border-right: 2px solid #EA5455;
-  border-radius: 7px;
+#event-title-bar {
+	.event-buttons{
+		float: right;
+	}
+
+	h1, h2{
+	display: inline-block;
+	}
+}
+
+
+
+.gradient {
+  position: absolute;
+  background-image:
+    -webkit-linear-gradient(
+      rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 1)
+  );
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 1)
+    );
+    width: 97.4%;
+    height: 400px;
+  z-index: -1;
+}
+.event_image img{
+
+  position:absolute;
+  width: 97.4%;
+  height: 400px;
+	z-index: -2;
 }
 
 .middle{
-  margin-top: 330px;
-  z-index: 10000;
+  margin-top: 390px;
+	// border: 2px outset $brand-color;
+	border-radius: 10px;
+	background-image: linear-gradient(
+    rgba(255, 255, 255, 0.4), rgba(45, 64, 89, 0)
+		);
 }
 
 
@@ -88,6 +125,7 @@
 //********//
 #sidebar-wrapper.active {
   background-color: $color-1;
+
 }
 
 .fa-bars {
