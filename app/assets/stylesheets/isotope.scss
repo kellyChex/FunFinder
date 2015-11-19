@@ -113,7 +113,11 @@ ol.type li a.active { font-weight: 700; }
     transition-property: transform, opacity;
 }
 .portfolio-item{
-    margin-bottom: 30px;
+    margin: 0 auto; 
+    img {
+        margin: 0 auto;
+        border-radius: 4px;
+    } 
 }
 .portfolio-item .hover-bg{
     height: 260px;

@@ -1,17 +1,13 @@
-<!-- Navigation -->
-<%= render 'navigation' %>
-
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
+	<div class="row text-center">
+    	<h1>New Event</h1>
+	</div>
 
-      <h1>New Event</h1>
 
       <%= render 'form' %>
 
+	<div class="row text-center">
+	      <%= link_to 'Back', events_path, class: "lnk dan" %>
+	</div>
 
-      <%= link_to 'Back', events_path, class: "lnk dan" %>
-
-    </div>
-  </div>
 </div>

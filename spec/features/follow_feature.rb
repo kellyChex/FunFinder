@@ -9,7 +9,7 @@ describe 'follow feature for a user', :type => :feature do
     fill_in 'Email', :with => 'user1@example.com'
     fill_in 'Password', :with => 'password'
     fill_in 'Password confirmation', :with => 'password'
-    attach_file('user_image', '../images/headshot.png')
+    attach_file('user_image', 'spec/images/headshot.png')
     click_button 'Sign up'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
     click_link 'Logout'
@@ -20,7 +20,7 @@ describe 'follow feature for a user', :type => :feature do
     fill_in 'Email', :with => 'user2@example.com'
     fill_in 'Password', :with => 'password'
     fill_in 'Password confirmation', :with => 'password'
-    attach_file('user_image', '../images/headshot.png')
+    attach_file('user_image', 'spec/images/headshot.png')
     click_button 'Sign up'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
 

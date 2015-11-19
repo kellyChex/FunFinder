@@ -7,7 +7,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'dcfd42a554a050ac2c25320db5fd6b4707e56e4b97e421655db15c05ba75c67e6789ded70ebd6ed63516fbb28b9951ee162e03dadb685b872fb2cef9b1150968'
-
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE unless Rails.env.production?
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -236,6 +236,12 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+
+  require 'omniauth-google-oauth2'
+    config.omniauth :google_oauth2, '215536427833-mb37kd4ljoq5oup9kis3jhdt95c2t687.apps.googleusercontent.com',
+    'ezWN4nwhi93djFs-7zocmmmc',
+    { access_type: "offline", approval_prompt: "",
+    scope: 'userinfo.email,calendar' }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

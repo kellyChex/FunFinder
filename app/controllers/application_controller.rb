@@ -10,13 +10,34 @@ class ApplicationController < ActionController::Base
     @tags = Tag.all
     @attendances = Attendance.all
 
+# This is for the event search bar
     if !params[:search_string].nil?
         search_string = params[:search_string].strip.downcase
         search_string = search_string.gsub("'", "\''")
         @searchedEvents = Event.where("LOWER(title) LIKE '%#{search_string}%'")
         @searchedTags = Tag.where("LOWER(name) LIKE '%#{search_string}%'")
-        render "search.html.erb"
+
+        @storage = []
+        @searchedEvents.each do |event|
+          @storage << event
+        end
+        @searchedTags.each do |tag|
+          if !@storage.include?(tag.event)
+            @storage << tag.event
+          end
+        end
+          render "search.html.erb"
     end
+
+# This is for the USER search bar
+    if !params[:search_user].nil?
+        search_user = params[:search_user].strip.downcase
+        @searchedUsers = User.where("LOWER(username) LIKE '%#{search_user}%'")
+        render "search_user.html.erb"
+    end
+
+# This is to sort the lists
+    @events = Event.order(sort_column + " " + sort_direction)
 
 # This is what creates the TOP EVENT
 
@@ -43,6 +64,18 @@ class ApplicationController < ActionController::Base
       @top_event = Event.where(:id => @common_event)
     end
 
+  end
+
+
+  private
+
+  # Setting defaults for sorting
+  def sort_column
+    Event.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 
