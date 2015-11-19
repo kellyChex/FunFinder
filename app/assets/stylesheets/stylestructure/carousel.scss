@@ -19,7 +19,7 @@
     }
     .event-featured {
       background-color: rgba(255,255,224,0.7);
-      height: 425px;
+      height: 460px;
 	    h2 {
 	    	color: $color-3;
 	    	font-weight: 600;
@@ -49,8 +49,11 @@
     }
     .event-text {
       background-color: rgba(0,0,0,0.6);
+      border: 0;
       width: 100%;
-      padding: 0;
+      line-height: 10px;
+      vertical-align: middle;
+
     }
     .active{
       &.left{

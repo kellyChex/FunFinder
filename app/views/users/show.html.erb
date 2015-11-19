@@ -10,6 +10,21 @@
             <h4>User ID: <%= @user.id %></h4>
             <h4>Sign In Count: <%= @user.sign_in_count %></h4>
             <h4>Last Signed In At: <%= @user.last_sign_in_at %></h4>
+
+            <% if current_user != @user %>
+                <%  if Following.where(:user_id => current_user.id, :followed_id => @user.id).blank? %>
+                    <%= link_to 'Follow', '/users/' + @user.id.to_s + '/follow', :method => :post, :class => "lnk sec" %>
+                <% else %>
+                    <%= link_to 'Unfollow', '/users/' + @user.id.to_s + '/unfollow', :method => :delete, :class => "lnk sec" %>
+                <% end %>
+            <% else %>
+                <%= link_to 'New Event', new_event_path, class: "lnk pri" %>
+            <% end %>
+
+            <% if @user.id == current_user.id %>
+                <%= link_to 'Edit', edit_user_registration_path(@user), class: "lnk sec" %>
+            <% end %>
+
         </div>
 <!-- Your Attending Events -->
         <div class="col-md-3">
@@ -64,24 +79,5 @@
         </div>
 
     </div> <!-- END ROW -->
-
-
-<!-- Profile Buttons: Follow/Unfollow, Create New Event, Edit Profile, Back -->
-    <div class="row text-center">
-        <div class="col-md-12">
-            <% if current_user != @user %>
-            	<% 	if Following.where(:user_id => current_user.id, :followed_id => @user.id).blank? %>
-            		<%= link_to 'Follow', '/users/' + @user.id.to_s + '/follow', :method => :post %>
-            	<% else %>
-            		<%= link_to 'Unfollow', '/users/' + @user.id.to_s + '/unfollow', :method => :delete %>
-            	<% end %>
-            <% else %>
-                <%= link_to 'New Event', new_event_path, class: "lnk pri" %>
-            <% end %>
-
-            <% if @user.id == current_user.id %>
-                <%= link_to 'Edit', edit_user_registration_path(@user), class: "lnk sec" %>
-            <% end %>
-        </div>
-    </div>
 </div>
+
