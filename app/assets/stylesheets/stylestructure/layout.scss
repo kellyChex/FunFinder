@@ -46,11 +46,21 @@
   }
 }
 
+.front-map{
+  height: 500px;
+  width: 100%;
+  z-index: 0;
+
+	pointer-events: none;
+
+}
+
+
 //EVENTS PAGE//
 //**********//
 
 .event-show {
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
 #show-map {
