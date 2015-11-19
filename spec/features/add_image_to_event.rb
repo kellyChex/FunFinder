@@ -4,20 +4,17 @@ require_relative '../rails_helper'
 describe 'upload image at event creation', :type => :feature do
   it 'should allow a user to sign up and create an event and attach an image to the event' do
     # User 1 Sign Up
-    visit '/'
-    click_link 'Sign Up'
-    attach_file('user_image', 'spec/images/headshot.png')
+    visit '/users/sign_up'
     fill_in 'Username', :with => 'username1'
     fill_in 'Email', :with => 'user1@example.com'
     fill_in 'Password', :with => 'password'
     fill_in 'Password confirmation', :with => 'password'
     attach_file('user_image', 'spec/images/headshot.png')
-    click_button 'Sign up'
-    page.to have_content 'Welcome! You have signed up successfully.'
+    click_button 'Sign Up'
+    page.has_content? 'Welcome! You have signed up successfully.'
 
    # Event Creation
-   visit '/events'
-   click_link('New Event')
+   visit '/events/new'
    fill_in 'Title', :with => 'New Event'
    attach_file 'event_image', 'spec/images/headshot.png'
    fill_in 'Description', :with => 'myDescription'
@@ -33,7 +30,7 @@ describe 'upload image at event creation', :type => :feature do
    fill_in 'event_end_time', :with => '13:09:00.000'
    click_button('Create Event')
 
-   expect(page).to have_content 'myDescription'
+   page.has_content? 'myDescription'
 
   end
 
