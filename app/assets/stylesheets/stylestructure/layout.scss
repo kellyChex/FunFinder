@@ -96,10 +96,42 @@ z-index: -10;
 
 }
 
+
 // PROFILE PAGE //
 //*************//
 
 .view-profile {
   margin-top: 50px;
   width: 100%;
+  .well {
+    background-color: $brand-color;
+    border: 2px solid $color-2;
+  }
+  hr {
+    color: $color-2;
+    border: 5px solid;
+  }
+}
+
+
+// NAV BAR //
+//********//
+#sidebar-wrapper.active {
+  background-color: $color-1;
+}
+
+.fa-bars {
+  color: $brand-color;
+}
+
+
+// SIGN UP PAGE //
+//*************//
+
+.signup {
+  margin: 40px;
+}
+.paperclip {
+  position: relative;
+  left: 45%;
 }
