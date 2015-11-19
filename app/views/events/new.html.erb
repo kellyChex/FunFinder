@@ -1,13 +1,11 @@
 <div class="container">
-	<div class="row text-center">
+	<div id="event-title-bar" class="row">
     	<h1>New Event</h1>
+			<div class="event-buttons">
+			<%= link_to 'Back', events_path, class: "lnk dan" %>
+			</div>
 	</div>
-
 
       <%= render 'form' %>
-
-	<div class="row text-center">
-	      <%= link_to 'Back', events_path, class: "lnk dan" %>
-	</div>
 
 </div>
