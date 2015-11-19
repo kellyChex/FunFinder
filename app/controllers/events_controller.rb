@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   respond_to :html, :js
   # GET /events
   # GET /events.json
+
   def index
     @events = Event.all
     @tags = Tag.all
@@ -12,11 +13,9 @@ class EventsController < ApplicationController
     @tags.each do |tag|
       if !@tag_names.include?(tag.name)
         @tag_names << tag.name
-      end 
+      end
     end
 
-
-    
   end
 
   # GET /events/1
@@ -81,12 +80,12 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-# DELETE ALL ATTENDANCES THAT THIS EVENT 
+# DELETE ALL ATTENDANCES THAT THIS EVENT
     @attendances = Attendance.where(:event_id => @event)
     @attendances.each do |attendance|
       attendance.destroy
     end
-    
+
     @event.destroy
 
     respond_to do |format|
@@ -123,6 +122,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
 
+
   def unattend
     @event = Event.find(params[:id])
     @attendance = Attendance.where(:user_id => current_user.id, :event_id => @event.id)
@@ -137,6 +137,97 @@ class EventsController < ApplicationController
 
     render 'show.html.erb'
   end
+
+
+  require 'google/api_client'
+  require 'google/api_client/client_secrets'
+  require 'google/api_client/auth/installed_app'
+  require 'google/api_client/auth/storage'
+  require 'google/api_client/auth/storages/file_store'
+  require 'fileutils'
+
+  APPLICATION_NAME = 'Google Calendar API Ruby Quickstart'
+  CLIENT_SECRETS_PATH = 'client_secret.json'
+  CREDENTIALS_PATH = File.join(Dir.home, '.credentials',"client_secret.json")
+  SCOPE = 'https://www.googleapis.com/auth/calendar'
+
+  # puts(CREDENTIALS_PATH)
+
+  ##
+  # Ensure valid credentials, either by restoring from the saved credentials
+  # files or intitiating an OAuth2 authorization request via InstalledAppFlow.
+  # If authorization is required, the user's default browser will be launched
+  # to approve the request.
+  #
+  # @return [Signet::OAuth2::Client] OAuth2 credentials
+
+  def authorize
+    FileUtils.mkdir_p(File.dirname(CREDENTIALS_PATH))
+
+    file_store = Google::APIClient::FileStore.new(CREDENTIALS_PATH)
+    storage = Google::APIClient::Storage.new(file_store)
+    auth = storage.authorize
+
+    if auth.nil? || (auth.expired? && auth.refresh_token.nil?)
+      app_info = Google::APIClient::ClientSecrets.load(CLIENT_SECRETS_PATH)
+      flow = Google::APIClient::InstalledAppFlow.new({
+        :client_id => app_info.client_id,
+        :client_secret => app_info.client_secret,
+        :scope => SCOPE})
+      auth = flow.authorize(storage)
+      puts "Credentials saved to #{CREDENTIALS_PATH}" unless auth.nil?
+    end
+    auth
+  end
+
+  def saveEvent
+  @event = Event.find(params[:id])
+  start_time = ((@event.start_date).to_s + 'T' + (@event.start_time.strftime("%H:%M:%S")).to_s + '-07:00')
+  end_time = ((@event.end_date).to_s + 'T' + (@event.end_time.strftime("%H:%M:%S")).to_s + '-07:00')
+  # Initialize the API
+  client = Google::APIClient.new(:application_name => APPLICATION_NAME)
+  client.authorization = authorize
+  calendar_api = client.discovered_api('calendar', 'v3')
+
+  googleEvent = {
+    'summary' => @event.title,
+    'location' => @event.location,
+    'description' => @event.description,
+    'start' => {
+      'dateTime' => start_time,
+      'timeZone' => 'America/Los_Angeles',
+    },
+    'end' => {
+      'dateTime' => end_time,
+      'timeZone' => 'America/Los_Angeles',
+    },
+    # 'start' => {
+    #   'dateTime' => '2015-06-28T09:01:00-07:00',
+    #   'timeZone' => 'America/Los_Angeles',
+    # },
+    # 'end' => {
+    #   'dateTime' => '2015-06-28T17:02:00-07:00',
+    #   'timeZone' => 'America/Los_Angeles',
+    # },
+    'reminders' => {
+      'useDefault' => false,
+      'overrides' => [
+        {'method' => 'email', 'minutes' => 24 * 60},
+        {'method' => 'popup', 'minutes' => 10},
+      ],
+    },
+  }
+
+  results = client.execute!(
+    :api_method => calendar_api.events.insert,
+    :parameters => {
+      :calendarId => 'primary'},
+    :body_object => googleEvent)
+  googleEvent = results.data
+  # puts "Event created: #{event.htmlLink}"
+  render 'show.html.erb'
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
