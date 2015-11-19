@@ -42,7 +42,7 @@
     </nav>
 
 <!-- Custom Theme JavaScript -->
-    <script>
+<script>
     // Closes the sidebar menu
     var closeNav = function(){
     $("#menu-close").click(function(e) {
@@ -65,6 +65,7 @@
     // Scrolls to the selected menu item on the page
     $(function() {
         $('a[href*=#]:not([href=#])').click(function() {
+            if( $(this).attr("href")=="#theCarousel") return; //This is the exception for the carousel
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
 
                 var target = $(this.hash);
@@ -78,4 +79,4 @@
             }
         });
     });
-    </script>
+</script>
