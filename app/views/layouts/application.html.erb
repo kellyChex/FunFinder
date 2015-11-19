@@ -16,8 +16,7 @@
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
-  <div class="row">
-    <div class="login">
+  <div class="row login">
       <%= link_to image_tag("funfinder-logo10.png", class: "logo"), root_path %>
       <% if user_signed_in? %>
         Logged in as <strong><%= current_user.username %></strong>
@@ -49,7 +48,6 @@
       <% end %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-    </div>
   </div>
 
 <!-- NAVIGATION -->

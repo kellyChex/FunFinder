@@ -6,6 +6,7 @@
         <br>
 
 <!-- THIS IS THE EVENT CAROUSEL -->
+
 		<div class="container">
 			<div class="col-md-12">
 				<div class="carousel slide multi-item-carousel" id="theCarousel">
@@ -43,26 +44,25 @@
 			</div>
 		</div>
 	</div>
-
-		<script>
-			$('#theCarousel').carousel({
-			  interval: false
-			})
-
-			$('.multi-item-carousel .item').each(function(){
-			  var next = $(this).next();
-			  if (!next.length) {
-			    next = $(this).siblings(':first');
-			  }
-			  next.children(':first-child').clone().appendTo($(this));
-
-			  if (next.next().length>0) {
-			    next.next().children(':first-child').clone().appendTo($(this));
-			  }
-			  else {
-			  	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-			  }
-			});
-		</script>
-
 </header>
+
+<script>
+	$('#theCarousel').carousel({
+	  interval: false
+	})
+
+	$('.multi-item-carousel .item').each(function(){
+	  var next = $(this).next();
+	  if (!next.length) {
+	    next = $(this).siblings(':first');
+	  }
+	  next.children(':first-child').clone().appendTo($(this));
+	  
+	  if (next.next().length>0) {
+	    next.next().children(':first-child').clone().appendTo($(this));
+	  }
+	  else {
+	  	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+	  }
+	});
+</script>
