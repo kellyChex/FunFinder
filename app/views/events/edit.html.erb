@@ -1,14 +1,13 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
+	<div class="row text-center">
+    	<h1>Editing Event</h1>
+	</div>
 
-      <h1>Editing Event</h1>
+    <%= render 'form' %>
 
-      <%= render 'form' %>
+    <div class="row text-center">
+    	<%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "lnk dan" %> 
+    	<%= link_to 'Back', @event, class: "lnk def" %>
+	</div>
 
-      <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "lnk dan" %> |
-      <%= link_to 'Back', @event, class: "lnk def" %>
-
-    </div>
-  </div>
 </div>

@@ -7,14 +7,14 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
               <% if user_signed_in? %>
-                <%= link_to current_user.username, current_user, :onclick => "closeNav()" %>
+                <%= link_to current_user.username.titleize, current_user, :onclick => "closeNav()" %>
               <% end %>
             </li>
             <li>
                 <% if user_signed_in? %>
                   <%= image_tag current_user.image.url(:thumb) %>
                 <% else %>
-                  <%= image_tag ("funfinder-logo10.png"), class: "logo" %>
+                  <%= image_tag ("funfinder-logo10.png"), class: "logo-nav" %>
                 <% end %>
             </li>
             <li>
