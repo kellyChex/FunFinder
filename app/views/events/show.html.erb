@@ -2,17 +2,12 @@
 
 <div class="container">
   <div class="row">
+
     <div class="col-md-12">
-      <h2>
-        <strong><%= @event.title %></strong>
-        <br>
+      <h2><strong><%= @event.title %></strong></h2>
         <%=link_to 'Add Event to Google Calendar', '/events/' + @event.id.to_s + '/saveEvent', :method => :post, class: "lnk pri" %>
-      </h2>
 
-      <!-- <div class="event_image" style="background-image: url('<%= @event.image.url %>') cover no-repeat"></div> -->
-
-      <div class="gradient"></div>
-      <img class="img-responsive event_image" src="<% image_tag (@event.image.url(:xlarge)) %>" ></img>
+      <%= image_tag(@event.image.url(:xlarge), :class => "img-responsive") %>
 
     </div>
   </div>
@@ -82,7 +77,7 @@
             <% @eventees.each do |eventee| %>
             <tr>
               <td><%= eventee.username%></td>
-              <td><%= link_to 'Show', @user, class: "lnk thi" %></td>
+              <td><%= link_to 'Show', eventee, class: "lnk thi" %></td>
             </tr>
             <% end %>
           <% end %>
