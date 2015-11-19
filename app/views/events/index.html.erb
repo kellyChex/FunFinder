@@ -1,17 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-
-<div class="row text-center">
-<% if user_signed_in? %>
-  <%= link_to 'New Event', new_event_path, class: "lnk pri" %>
-<% end %>
-</div>
-
-
 <!-- ISOTOPE IMAGE FILTERING GRID -->
 <!-- **************************** -->
     <div id="tf-works">
-        <div class="container col-lg-12"> <!-- Container -->
+      <div class="row text-center">
+        <% if user_signed_in? %>
+          <%= link_to 'New Event', new_event_path, class: "lnk pri" %>
+        <% end %>
+      </div>
+        <div class="container col-md-12"> <!-- Container -->
             <div class="section-title text-center center">
                 <div class="clearfix"></div>
             </div>
