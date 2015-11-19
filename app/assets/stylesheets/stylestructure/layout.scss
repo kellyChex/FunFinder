@@ -53,6 +53,21 @@
   width: 357px;
 }
 
+#create-map{
+	height: 400px;
+  width: 357px;
+
+}
+
+#event-title-bar {
+	.event-buttons{
+		float: right;
+	}
+
+	h2{
+	display: inline-block;
+	}
+}
 .gradient {
   position: absolute;
   background-image:
@@ -65,19 +80,19 @@
     );
     width: 97.4%;
     height: 400px;
-  z-index: 1;
+  z-index: -1;
 }
 .event_image img{
 
   position:absolute;
   width: 97.4%;
   height: 400px;
-	z-index: -1;
+	z-index: -2;
 }
 
 .middle{
   margin-top: 350px;
-  z-index: 2;
+
 }
 
 
@@ -103,6 +118,7 @@
 //********//
 #sidebar-wrapper.active {
   background-color: $color-1;
+
 }
 
 .fa-bars {
