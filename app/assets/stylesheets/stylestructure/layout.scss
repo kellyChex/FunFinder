@@ -2,6 +2,7 @@
 //*************//
 .header {
 	color: #fff;
+  margin-top: 3%;
   .slogan {
     font-size: 50px;
     color: #fff;
@@ -107,10 +108,10 @@
 //*************//
 
 .view-profile {
-  margin-top: 50px;
+  margin-top: 100px;
   width: 100%;
   .well {
-    background-color: $brand-color;
+    background-color: $color-3;
     border: 2px solid $color-2;
   }
   hr {
@@ -128,18 +129,18 @@
 }
 
 .fa-bars {
-  color: $brand-color;
+  color: $color-3;
 }
 
 
 // SIGN UP PAGE //
 //*************//
 .signup {
-  margin: 40px;
+  margin: 150px;
 }
 .paperclip {
   position: relative;
-  left: 45%;
+  left: 28%;
 }
 
 

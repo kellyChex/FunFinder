@@ -1,5 +1,4 @@
 // THIS IS THE STYLES FOR THE CAROUSEL IN THE HEADER
-.object-fit_fill { object-fit: fill }
 
 .multi-item-carousel{
   .carousel-inner{
@@ -7,7 +6,7 @@
       transition: .6s ease-in-out all;
       height: 500px;
       img {
-      	margin: 0 auto;
+        margin: 0 auto;
         object-fit: fill;
         height: 300px;
         width: 300px;
@@ -20,14 +19,14 @@
     .event-featured {
       background-color: rgba(255,255,224,0.7);
       height: 460px;
-	    h2 {
-	    	color: $color-3;
-	    	font-weight: 600;
+      h2 {
+        color: $color-3;
+        font-weight: 600;
         font-size: 40px;
         padding: 2px;
         margin: 0;
         text-shadow: 2px 2px #000;
-	    }
+      }
       hr {
         color: $color-3;
         width: 30%;
@@ -36,7 +35,6 @@
         padding: 0;
       }
       img {
-        object-fit: fill;
         height: 250px;
         width: 300px;
       }
