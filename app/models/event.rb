@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_many :tags, dependent: :destroy
   has_many :attendees, :class_name => 'Attendances', :foreign_key => 'user_id'
   has_many :attendance, :class_name => 'Attendances', :foreign_key => 'event_id'
-  has_attached_file :image, styles: { thumb: "64x64", med: "100x100", large: "300x300", xlarge: "1920x500" }, dependent: :destroy, :default_url => "default_cal_:style.png"
+  has_attached_file :image, styles: { thumb: "64x64", med: "100x100", large: "300x300", xlarge: "1920x1080" }, dependent: :destroy, :default_url => "default_cal_:style.png"
 
   validates :title, :presence => true
   validates :description, :presence => true

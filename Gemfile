@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # User Login Gem
 gem 'devise'
 
