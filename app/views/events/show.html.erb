@@ -16,8 +16,10 @@
           <% end %>
 
 
+          <% if user_signed_in? %>
+            <%=link_to 'Add Event to Google Calendar', '/events/' + @event.id.to_s + '/saveEvent', :method => :post, class: "lnk pri" %>
+          <% end %>
 
-          <%=link_to 'Add Event to Google Calendar', '/events/' + @event.id.to_s + '/saveEvent', :method => :post, class: "lnk pri" %>
 
           <% if user_signed_in? %>
             <% if @event.user_id == current_user.id %>
@@ -113,7 +115,10 @@
             <% @eventees.each do |eventee| %>
             <tr>
               <td><%= eventee.username.titleize %></td>
+
+              <% if user_signed_in? %>
               <td><%= link_to 'Show', eventee, class: "lnk thi" %></td>
+              <% end %>
             </tr>
             <% end %>
           <% end %>

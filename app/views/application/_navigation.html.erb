@@ -31,14 +31,16 @@
         </ul>
 
 <!-- USER SEARCH BAR -->
-        <div id="search_form_users" class="search_users">
-          <form action ='/' method='get'>
-            <input id="word_search_input_users" type="text" placeholder =" Search  Users" name="search_user" />
-            <button type="submit" class="btn btn-default form_button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </form>
-        </div>
+        <% if user_signed_in? %>
+            <div id="search_form_users" class="search_users">
+              <form action ='/' method='get'>
+                <input id="word_search_input_users" type="text" placeholder =" Search  Users" name="search_user" />
+                <button type="submit" class="btn btn-default form_button">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </form>
+            </div>
+        <% end %>
     </nav>
 
 <!-- Custom Theme JavaScript -->
