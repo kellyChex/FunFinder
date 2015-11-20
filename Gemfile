@@ -53,7 +53,7 @@ gem 'textacular', "~> 3.0", require: 'textacular/rails'
 
   gem 'google-api-client', :require => 'google/api_client'
   gem 'omniauth'
-  gem 'omniauth-google-oauth2'
+  gem 'omniauth-oauth2', '~> 1.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
