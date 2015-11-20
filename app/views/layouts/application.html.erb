@@ -19,7 +19,7 @@
   <div class="row login">
       <%= link_to image_tag("funfinder-logo10.png", class: "logo"), root_path %>
       <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.username %></strong>
+        Logged in as <strong><%= current_user.username.titleize %></strong>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "lnk def" %>
 
         <div id= "search_form">
