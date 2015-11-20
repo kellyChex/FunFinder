@@ -9,13 +9,12 @@ describe 'upload image at event creation', :type => :feature do
     fill_in 'Email', :with => 'user1@example.com'
     fill_in 'Password', :with => 'password'
     fill_in 'Password confirmation', :with => 'password'
-    attach_file('user_image', '../images/headshot.png')
-    click_button 'Sign up'
-    expect(page).to have_content 'Welcome! You have signed up successfully.'
+    attach_file('user_image', 'spec/images/headshot.png')
+    click_button 'Sign Up'
+    page.has_content? 'Welcome! You have signed up successfully.'
 
    # Event Creation
-   visit '/events'
-   click_link('New Event')
+   visit '/events/new'
    fill_in 'Title', :with => 'New Event'
    attach_file 'event_image', 'spec/images/headshot.png'
    fill_in 'Description', :with => 'myDescription'
@@ -31,7 +30,7 @@ describe 'upload image at event creation', :type => :feature do
    fill_in 'event_end_time', :with => '13:09:00.000'
    click_button('Create Event')
 
-   expect(page).to have_content 'myDescription'
+   page.has_content? 'myDescription'
 
   end
 

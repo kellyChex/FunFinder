@@ -10,12 +10,12 @@ describe 'attend feature for an event', :type => :feature do
     fill_in 'Password', :with => 'password'
     fill_in 'Password confirmation', :with => 'password'
     attach_file('user_image', 'spec/images/headshot.png')
-    click_button 'Sign up'
-    expect(page).to have_content 'Welcome! You have signed up successfully.'
+    page.find("#signup").click
+    page.has_content? 'Welcome! You have signed up successfully.'
 
    # Event Creation
    visit '/events'
-   click_link('New Event')
+   click_on('New Event')
    fill_in 'Title', :with => 'New Event'
    attach_file 'event_image', 'spec/images/headshot.png'
    fill_in 'Description', :with => 'myDescription'
@@ -29,9 +29,9 @@ describe 'attend feature for an event', :type => :feature do
    fill_in 'event_start_time', :with => '00:45:00.000'
    fill_in 'event_end_time', :with => '13:09:00.000'
    click_button('Create Event')
-   expect(page).to have_content 'myDescription'
+   page.has_content? 'myDescription'
    click_link 'Unattend'
-   expect(page).to have_content 'Attend'
+   page.has_content? 'Attend'
 
     # User unattends Event
     click_link 'Attend'
